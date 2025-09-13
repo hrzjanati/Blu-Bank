@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: BaseViewController {
-    
+    var coordinator: HomeCoordinator?
     override func viewDidLoad() {
         super.viewDidLoad()
     }
