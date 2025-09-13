@@ -19,14 +19,10 @@ class AppCoordinator: Coordinator {
     
     // MARK: - ----------------- Start
     func start() {
-        guard let navigationController = navigationController else { return }
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        startFirstVC()
-    }
-    
-    private func startFirstVC() {
-        guard let navigationController = navigationController else { return }
-        HomeCoordinator(navigationController: navigationController).start()
+        
+        let homeVC = AppDIContainer.shared.container.resolve(HomeViewController.self)!
+        navigationController?.pushViewController(homeVC, animated: true)
     }
 }

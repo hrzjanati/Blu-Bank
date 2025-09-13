@@ -21,6 +21,8 @@
 		CEAF2DA72E75A6140053C5BA /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2DA62E75A6140053C5BA /* HomeModel.swift */; };
 		CEAF2DA92E75A6380053C5BA /* HomeDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2DA82E75A6380053C5BA /* HomeDI.swift */; };
 		CEAF2DAB2E75A6420053C5BA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2DAA2E75A6420053C5BA /* HomeRouter.swift */; };
+		CEAF2DAE2E75AB710053C5BA /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CEAF2DAD2E75AB710053C5BA /* Swinject */; };
+		CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2DAF2E75AC660053C5BA /* AppDIContainerI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,7 @@
 		CEAF2DA62E75A6140053C5BA /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		CEAF2DA82E75A6380053C5BA /* HomeDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDI.swift; sourceTree = "<group>"; };
 		CEAF2DAA2E75A6420053C5BA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		CEAF2DAF2E75AC660053C5BA /* AppDIContainerI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainerI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAF2DAE2E75AB710053C5BA /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +171,7 @@
 		CEAF2D8D2E759EF90053C5BA /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				CEAF2DAF2E75AC660053C5BA /* AppDIContainerI.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			);
 			name = "Blu-Bank";
 			packageProductDependencies = (
+				CEAF2DAD2E75AB710053C5BA /* Swinject */,
 			);
 			productName = "Blu-Bank";
 			productReference = CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */;
@@ -217,6 +223,9 @@
 			);
 			mainGroup = CEAF2D382E758FFE0053C5BA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CEAF2D422E758FFE0053C5BA /* Products */;
 			projectDirPath = "";
@@ -245,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
+				CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */,
 				CEAF2DAB2E75A6420053C5BA /* HomeRouter.swift in Sources */,
 				CEAF2DA52E75A3430053C5BA /* HomeViewModel.swift in Sources */,
 				CEAF2D7B2E75958F0053C5BA /* HomeViewController.swift in Sources */,
@@ -471,6 +481,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEAF2DAD2E75AB710053C5BA /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEAF2D392E758FFE0053C5BA /* Project object */;
 }

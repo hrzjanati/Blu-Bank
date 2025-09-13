@@ -10,10 +10,11 @@ import Foundation
 extension HomeViewController {
     class ViewModel : BaseViewModel {
         // MARK: - ----------------- Propertires
-        
+        var userName : String?
         // MARK: - ----------------- Init
-        override init() {
-            
+        init(userName : String) {
+            self.userName = userName
+            super.init()
         }
     }
 }
