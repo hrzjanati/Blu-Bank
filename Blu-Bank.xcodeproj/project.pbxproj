@@ -6,30 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CEAF2D512E758FFF0053C5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */; };
+		CEAF2D782E75958D0053C5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAF2D762E75958D0053C5BA /* Assets.xcassets */; };
+		CEAF2D7B2E75958F0053C5BA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D792E75958F0053C5BA /* HomeViewController.swift */; };
+		CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D7C2E7595910053C5BA /* AppDelegate.swift */; };
+		CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D7D2E7595910053C5BA /* SceneDelegate.swift */; };
+		CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D882E759A780053C5BA /* BaseViewController.swift */; };
+		CEAF2D8B2E759AB00053C5BA /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D8A2E759AB00053C5BA /* BaseViewModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blu-Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAF2D502E758FFF0053C5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEAF2D732E7595680053C5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEAF2D762E75958D0053C5BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEAF2D792E75958F0053C5BA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CEAF2D7C2E7595910053C5BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEAF2D7D2E7595910053C5BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CEAF2D882E759A780053C5BA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CEAF2D8A2E759AB00053C5BA /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CEAF2D532E758FFF0053C5BA /* Exceptions for "Blu-Bank" folder in "Blu-Bank" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CEAF2D402E758FFE0053C5BA /* Blu-Bank */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CEAF2D432E758FFE0053C5BA /* Blu-Bank */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CEAF2D532E758FFF0053C5BA /* Exceptions for "Blu-Bank" folder in "Blu-Bank" target */,
-			);
-			path = "Blu-Bank";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CEAF2D3E2E758FFE0053C5BA /* Frameworks */ = {
@@ -45,7 +42,7 @@
 		CEAF2D382E758FFE0053C5BA = {
 			isa = PBXGroup;
 			children = (
-				CEAF2D432E758FFE0053C5BA /* Blu-Bank */,
+				CEAF2D742E7595680053C5BA /* Blu-Bank */,
 				CEAF2D422E758FFE0053C5BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +53,85 @@
 				CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CEAF2D742E7595680053C5BA /* Blu-Bank */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D7E2E7595910053C5BA /* Application */,
+				CEAF2D772E75958D0053C5BA /* Resource */,
+				CEAF2D852E7599DF0053C5BA /* Network */,
+				CEAF2D7A2E75958F0053C5BA /* Controller */,
+			);
+			path = "Blu-Bank";
+			sourceTree = "<group>";
+		};
+		CEAF2D772E75958D0053C5BA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D762E75958D0053C5BA /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CEAF2D7A2E75958F0053C5BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D872E759A410053C5BA /* Base */,
+				CEAF2D862E759A290053C5BA /* UI */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEAF2D7E2E7595910053C5BA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D732E7595680053C5BA /* Info.plist */,
+				CEAF2D7C2E7595910053C5BA /* AppDelegate.swift */,
+				CEAF2D7D2E7595910053C5BA /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CEAF2D822E7596810053C5BA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D792E75958F0053C5BA /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CEAF2D832E7596DF0053C5BA /* Luanch */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */,
+			);
+			path = Luanch;
+			sourceTree = "<group>";
+		};
+		CEAF2D852E7599DF0053C5BA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CEAF2D862E759A290053C5BA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D832E7596DF0053C5BA /* Luanch */,
+				CEAF2D822E7596810053C5BA /* Home */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CEAF2D872E759A410053C5BA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D882E759A780053C5BA /* BaseViewController.swift */,
+				CEAF2D8A2E759AB00053C5BA /* BaseViewModel.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +148,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CEAF2D432E758FFE0053C5BA /* Blu-Bank */,
 			);
 			name = "Blu-Bank";
 			packageProductDependencies = (
@@ -122,6 +195,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAF2D782E75958D0053C5BA /* Assets.xcassets in Resources */,
+				CEAF2D512E758FFF0053C5BA /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +207,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAF2D7B2E75958F0053C5BA /* HomeViewController.swift in Sources */,
+				CEAF2D8B2E759AB00053C5BA /* BaseViewModel.swift in Sources */,
+				CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */,
+				CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */,
+				CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEAF2D502E758FFF0053C5BA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CEAF2D552E758FFF0053C5BA /* Debug */ = {
@@ -147,10 +238,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B48Q8RY5GC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Blu-Bank/Info.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/Blu-Bank/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -175,10 +266,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B48Q8RY5GC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Blu-Bank/Info.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/Blu-Bank/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
