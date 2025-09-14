@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 class AppCoordinator: Coordinator {
     // MARK: - ----------------- Properties
     var navigationController: UINavigationController?
@@ -22,7 +23,7 @@ class AppCoordinator: Coordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         // Show First View didFinishLunch
-        let homeCoordinator = HomeCoordinator(navigationController: navigationController!)
+        let homeCoordinator = TransfreListCoordinator(navigationController: navigationController!)
         homeCoordinator.start()
     }
 }

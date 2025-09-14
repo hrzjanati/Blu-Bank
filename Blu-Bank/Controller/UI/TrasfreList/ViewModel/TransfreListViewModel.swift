@@ -22,9 +22,9 @@ extension TransfreListViewController {
             super.init()
         }
         
-        func fetchTransferList(_ page: Int) -> AnyPublisher<[TransferModel], NetworkError> {
+        func fetchTransferList(_ page: Int) -> AnyPublisher<[TransfreListModel], NetworkError> {
             isLoading = true
-            let router = TransferRouter.transferList(page: page)
+            let router = TransferListRouter.transferList(page: page)
             
             return provider.networkService.request(router)
                 .handleEvents(receiveCompletion: { [weak self] _ in

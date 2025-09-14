@@ -7,7 +7,7 @@
 
 import Foundation
 // MARK: - ----------------- Network Router
-enum TransfreListRouter : NetworkRouter {
+enum TransferListRouter: NetworkRouter {
     case transferList(page: Int)
     
     var path: String { "transfer-list/" }
@@ -19,3 +19,4 @@ enum TransfreListRouter : NetworkRouter {
         }
     }
 }
+
