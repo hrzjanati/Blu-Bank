@@ -40,16 +40,21 @@ class TransfreListAssembly: Assembly {
 // MARK: - ----------------- Provider Protocol
 protocol TransfreListDIProvider {
     var isLoading: Bool { get }
+    var transfreList: [TransfreListModel] { get }
     var networkService: NetworkServiceProtocol { get }
 }
 
 // MARK: - ----------------- Provider Implementation
 class TransfreListDIProviding: TransfreListDIProvider {
+ 
     let isLoading: Bool
+    var transfreList: [TransfreListModel]
     let networkService: NetworkServiceProtocol
     
     init(isLoading: Bool = false, networkService: NetworkServiceProtocol = NetworkService()) {
         self.isLoading = isLoading
         self.networkService = networkService
+        self.transfreList = []
     }
+    
 }

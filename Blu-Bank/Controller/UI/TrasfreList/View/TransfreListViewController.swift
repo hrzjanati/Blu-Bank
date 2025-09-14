@@ -7,36 +7,33 @@
 
 import UIKit
 
-class TransfreListViewController: UIViewController {
-   // MARK: - ----------------- Properties
+class TransfreListViewController: BaseViewController {
+    // MARK: - ----------------- Properties
     var coordinator: TransfreListCoordinator?
     var vm: ViewModel?
     // MARK: - ----------------- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTransferList()
-        view.backgroundColor = .systemGreen
+        setUpView()
     }
 }
 // MARK: - ----------------- Network call API
 extension TransfreListViewController {
-    private func fetchTransferList() {
-        guard let vm = vm else {
-            assertionFailure("ViewModel not injected")
-            return
-        }
-        vm.fetchTransferList(1)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    print("Completed fetching transfer list")
-                case .failure(let error):
-                    print("Error fetching transfer list: \(error)")
-                }
-            } receiveValue: { transfers in
-                print("Received transfers:", transfers)
-            }
-            .store(in: vm.cancelBage)
+    ///SetUp View
+    private func setUpView() {
+        guard let vm = vm else { return }
+        let swiftUIView = TransferView(vm: vm)
+        let hosting = UIHostingController<TransferView>(rootView: swiftUIView)
+        
+        guard let transfreView = hosting.view else { return }
+        
+        transfreView
+            .add(base: self.view)
+            .top(to: self.view.safeTopAnchor)
+            .horizontal(to: self.view)
+            .bottom(to: self.view.safeBottomAnchor)
+            .closed()
+        
     }
 }
 // MARK: - ----------------- Preview

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TransfreListModel: Codable {
+struct TransfreListModel: Codable , Identifiable {
     struct Person: Codable {
         let full_name: String
         let email: String?
@@ -29,4 +29,6 @@ struct TransfreListModel: Codable {
     let last_transfer: String
     let note: String?
     let more_info: MoreInfo
+    
+    var id: String { card.card_number }
 }
