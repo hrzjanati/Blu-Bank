@@ -11,7 +11,7 @@ class BaseViewController: UIViewController {
     // MARK: - ----------------- Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemRed
+        self.view.backgroundColor = .systemBackground
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

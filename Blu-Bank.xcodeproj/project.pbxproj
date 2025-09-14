@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE19FC202E76DC5700CE78F1 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */; };
+		CE19FC232E76E45600CE78F1 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC222E76E45600CE78F1 /* CancelBag.swift */; };
+		CE19FC432E76E60600CE78F1 /* TransfreListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */; };
+		CE19FC442E76E60600CE78F1 /* TransfreListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */; };
+		CE19FC452E76E60600CE78F1 /* TransfreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */; };
+		CE19FC462E76E60600CE78F1 /* TransfreListDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */; };
+		CE19FC472E76E60600CE78F1 /* TransfreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3F2E76E60600CE78F1 /* TransfreListViewController.swift */; };
+		CE19FC482E76E60600CE78F1 /* TransfreListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */; };
+		CE19FC4C2E76EA6800CE78F1 /* ExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC4B2E76EA6800CE78F1 /* ExView.swift */; };
+		CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC4D2E76EAA600CE78F1 /* ExColor.swift */; };
+		CE19FC502E76EABF00CE78F1 /* ExButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC4F2E76EABF00CE78F1 /* ExButton.swift */; };
+		CE19FC522E76EAEF00CE78F1 /* ExConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC512E76EAEF00CE78F1 /* ExConstraint.swift */; };
+		CE19FC542E76EB2B00CE78F1 /* ExStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC532E76EB2B00CE78F1 /* ExStack.swift */; };
+		CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC552E76EB5400CE78F1 /* ExLable.swift */; };
+		CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC582E76EBA700CE78F1 /* String+Extension.swift */; };
 		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
 		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
 		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
@@ -31,6 +46,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
+		CE19FC222E76E45600CE78F1 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListCoordinator.swift; sourceTree = "<group>"; };
+		CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListDI.swift; sourceTree = "<group>"; };
+		CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListModel.swift; sourceTree = "<group>"; };
+		CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListRouter.swift; sourceTree = "<group>"; };
+		CE19FC3F2E76E60600CE78F1 /* TransfreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListViewController.swift; sourceTree = "<group>"; };
+		CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListViewModel.swift; sourceTree = "<group>"; };
+		CE19FC4B2E76EA6800CE78F1 /* ExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExView.swift; sourceTree = "<group>"; };
+		CE19FC4D2E76EAA600CE78F1 /* ExColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExColor.swift; sourceTree = "<group>"; };
+		CE19FC4F2E76EABF00CE78F1 /* ExButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExButton.swift; sourceTree = "<group>"; };
+		CE19FC512E76EAEF00CE78F1 /* ExConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExConstraint.swift; sourceTree = "<group>"; };
+		CE19FC532E76EB2B00CE78F1 /* ExStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStack.swift; sourceTree = "<group>"; };
+		CE19FC552E76EB5400CE78F1 /* ExLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExLable.swift; sourceTree = "<group>"; };
+		CE19FC582E76EBA700CE78F1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
@@ -67,6 +97,123 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE19FC1D2E76DC3400CE78F1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC492E76EA3500CE78F1 /* Extension */,
+				CE19FC1E2E76DC4000CE78F1 /* SwiftUI */,
+				CE19FC212E76E44600CE78F1 /* Combine */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		CE19FC1E2E76DC4000CE78F1 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		CE19FC212E76E44600CE78F1 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC222E76E45600CE78F1 /* CancelBag.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		CE19FC242E76E50C00CE78F1 /* TrasfreList */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC402E76E60600CE78F1 /* View */,
+				CE19FC422E76E60600CE78F1 /* ViewModel */,
+				CE19FC3C2E76E60600CE78F1 /* Model */,
+				CE19FC3E2E76E60600CE78F1 /* NetworkRouter */,
+				CE19FC382E76E60600CE78F1 /* Coordinator */,
+				CE19FC3A2E76E60600CE78F1 /* DI */,
+			);
+			path = TrasfreList;
+			sourceTree = "<group>";
+		};
+		CE19FC382E76E60600CE78F1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CE19FC3A2E76E60600CE78F1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CE19FC3C2E76E60600CE78F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE19FC3E2E76E60600CE78F1 /* NetworkRouter */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */,
+			);
+			path = NetworkRouter;
+			sourceTree = "<group>";
+		};
+		CE19FC402E76E60600CE78F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC3F2E76E60600CE78F1 /* TransfreListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE19FC422E76E60600CE78F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE19FC492E76EA3500CE78F1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC4A2E76EA4F00CE78F1 /* UI+Extension */,
+				CE19FC572E76EB8B00CE78F1 /* Logic+Extension */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE19FC4A2E76EA4F00CE78F1 /* UI+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC4B2E76EA6800CE78F1 /* ExView.swift */,
+				CE19FC4D2E76EAA600CE78F1 /* ExColor.swift */,
+				CE19FC4F2E76EABF00CE78F1 /* ExButton.swift */,
+				CE19FC512E76EAEF00CE78F1 /* ExConstraint.swift */,
+				CE19FC532E76EB2B00CE78F1 /* ExStack.swift */,
+				CE19FC552E76EB5400CE78F1 /* ExLable.swift */,
+			);
+			path = "UI+Extension";
+			sourceTree = "<group>";
+		};
+		CE19FC572E76EB8B00CE78F1 /* Logic+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC582E76EBA700CE78F1 /* String+Extension.swift */,
+			);
+			path = "Logic+Extension";
+			sourceTree = "<group>";
+		};
 		CE88AB1D2E76B4F200852723 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +265,7 @@
 				CEAF2D8C2E759ED50053C5BA /* Coordinator */,
 				CEAF2D8D2E759EF90053C5BA /* DI */,
 				CEAF2D7A2E75958F0053C5BA /* Controller */,
+				CE19FC1D2E76DC3400CE78F1 /* Helper */,
 			);
 			path = "Blu-Bank";
 			sourceTree = "<group>";
@@ -185,6 +333,7 @@
 			children = (
 				CEAF2D832E7596DF0053C5BA /* Luanch */,
 				CEAF2D822E7596810053C5BA /* Home */,
+				CE19FC242E76E50C00CE78F1 /* TrasfreList */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -292,23 +441,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE19FC542E76EB2B00CE78F1 /* ExStack.swift in Sources */,
+				CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */,
+				CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */,
 				CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */,
 				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
 				CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */,
+				CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */,
 				CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */,
 				CEAF2DAB2E75A6420053C5BA /* HomeRouter.swift in Sources */,
 				CE88AB1C2E76B44700852723 /* NetworkService.swift in Sources */,
+				CE19FC232E76E45600CE78F1 /* CancelBag.swift in Sources */,
 				CEAF2DA52E75A3430053C5BA /* HomeViewModel.swift in Sources */,
+				CE19FC202E76DC5700CE78F1 /* UIView+Preview.swift in Sources */,
+				CE19FC4C2E76EA6800CE78F1 /* ExView.swift in Sources */,
 				CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */,
 				CEAF2D7B2E75958F0053C5BA /* HomeViewController.swift in Sources */,
 				CEAF2D8B2E759AB00053C5BA /* BaseViewModel.swift in Sources */,
+				CE19FC522E76EAEF00CE78F1 /* ExConstraint.swift in Sources */,
 				CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */,
 				CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */,
+				CE19FC502E76EABF00CE78F1 /* ExButton.swift in Sources */,
 				CEAF2DA32E75A0570053C5BA /* HomeCoordinator.swift in Sources */,
 				CEAF2DA92E75A6380053C5BA /* HomeDI.swift in Sources */,
 				CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */,
 				CEAF2DA72E75A6140053C5BA /* HomeModel.swift in Sources */,
 				CEAF2D912E759FA60053C5BA /* Coordinator.swift in Sources */,
+				CE19FC432E76E60600CE78F1 /* TransfreListRouter.swift in Sources */,
+				CE19FC442E76E60600CE78F1 /* TransfreListModel.swift in Sources */,
+				CE19FC452E76E60600CE78F1 /* TransfreListViewModel.swift in Sources */,
+				CE19FC462E76E60600CE78F1 /* TransfreListDI.swift in Sources */,
+				CE19FC472E76E60600CE78F1 /* TransfreListViewController.swift in Sources */,
+				CE19FC482E76E60600CE78F1 /* TransfreListCoordinator.swift in Sources */,
 				CE88AB202E76B50C00852723 /* NetworkRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

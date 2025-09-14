@@ -21,8 +21,8 @@ class AppCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        
-        let homeVC = AppDIContainer.shared.container.resolve(HomeViewController.self)!
-        navigationController?.pushViewController(homeVC, animated: true)
+        // Show First View didFinishLunch
+        let homeCoordinator = HomeCoordinator(navigationController: navigationController!)
+        homeCoordinator.start()
     }
 }

@@ -1,13 +1,13 @@
 //
-//  HomeCoordinator.swift
+//  TransfreList.swift
 //  Blu-Bank
 //
-//  Created by Nik on 13/09/2025.
+//  Created by Nik on 14/09/2025.
 //
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
+class TransfreListCoordinator {
     // MARK: - ----------------- Properties
     var navigationController: UINavigationController?
     // MARK: - ----------------- Init
@@ -16,20 +16,15 @@ class HomeCoordinator: Coordinator {
     }
     // MARK: - ----------------- Start
     func start() {
-        guard let vc = AppDIContainer.shared.container.resolve(HomeViewController.self) else {
-            fatalError("HomeViewController dependency not found")
+        // Resolve from DI container
+        guard let vc = AppDIContainer.shared.container.resolve(TransfreListViewController.self) else {
+            fatalError("TransferListViewController dependency not found")
         }
         vc.coordinator = self
-        vc.navigationItem.title = "Home Transfer List"
+        vc.navigationItem.title = "Transfer List"
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     func dismiss() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    func showDetailsView() {
-        let coordinator = TransfreListCoordinator(navigationController: navigationController!)
-        coordinator.start()
     }
 }

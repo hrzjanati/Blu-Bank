@@ -7,19 +7,29 @@
 
 import Swinject
 
+// MARK: - ----------------- Home Assembly
 class HomeAssembly: Assembly {
     func assemble(container: Container) {
+        
+        // NetworkService singleton
+        container.register(NetworkServiceProtocol.self) { _ in
+            NetworkService()
+        }.inObjectScope(.container)
+        
         // Provider
-        container.register(HomeDIProvider.self) { _ in
-            HomeDIProviding()
+        container.register(HomeDIProvider.self) { resolver in
+            let networkService = resolver.resolve(NetworkServiceProtocol.self)!
+            return HomeDIProviding(networkService: networkService)
         }
+        
         // ViewModel
         container.register(HomeViewController.ViewModel.self) { resolver in
             guard let provider = resolver.resolve(HomeDIProvider.self) else {
                 fatalError("⚠️ HomeDIProvider dependency not found")
             }
-            return HomeViewController.ViewModel( provider: provider)
+            return HomeViewController.ViewModel(provider: provider)
         }
+        
         // View
         container.register(HomeViewController.self) { resolver in
             let vc = HomeViewController()
@@ -29,20 +39,19 @@ class HomeAssembly: Assembly {
         }
     }
 }
-/// If some properties require default/initial values, you can manage them
-/// through a Provider and inject into ViewModel or ViewController.
-/// This approach helps keep dependencies decoupled and maintainable.
-// MARK: - ----------------- Home Provider
+
+// MARK: - ----------------- Home Provider Protocol
 protocol HomeDIProvider {
     var isLoading: Bool { get }
     var networkService: NetworkServiceProtocol { get }
 }
-// MARK: - ----------------- Home Providing
+
+// MARK: - ----------------- Home Provider Implementation
 class HomeDIProviding: HomeDIProvider {
-    // Inject init value
     var isLoading: Bool = false
-    // Inject network service
-    var networkService: NetworkServiceProtocol {
-        NetworkService()
+    let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
     }
 }

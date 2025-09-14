@@ -1,27 +1,26 @@
 //
-//  HomeViewModel.swift
+//  TransfreList.swift
 //  Blu-Bank
 //
-//  Created by Nik on 13/09/2025.
+//  Created by Nik on 14/09/2025.
 //
 
+import UIKit
 import Foundation
 import Combine
 
-extension HomeViewController {
+extension TransfreListViewController {
     class ViewModel : BaseViewModel {
         // MARK: - ----------------- Propertires
-        private let provider: HomeDIProvider
-        var isLoading : Bool
+        private let provider: TransfreListDIProvider
         var cancelBage = CancelBag()
+        var isLoading : Bool
         // MARK: - ----------------- Init
-        init(provider: HomeDIProvider) {
+        init(provider: TransfreListDIProvider) {
             self.provider = provider
             self.isLoading = provider.isLoading
             super.init()
         }
-        
-        
         
         func fetchTransferList(_ page: Int) -> AnyPublisher<[TransferModel], NetworkError> {
             isLoading = true

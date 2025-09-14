@@ -14,7 +14,9 @@ class AppDIContainer {
     // MARK: - ----------------- Init
     private init() {
         let assemblies: [Assembly] = [
-            HomeAssembly()
+            HomeAssembly() ,
+            TransfreListAssembly()
+            
         ]
         assemblies.forEach { $0.assemble(container: container) }
     }

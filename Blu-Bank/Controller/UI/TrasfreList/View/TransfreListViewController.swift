@@ -1,48 +1,25 @@
 //
-//  ViewController.swift
+//  TransfreList.swift
 //  Blu-Bank
 //
-//  Created by Nik on 13/09/2025.
+//  Created by Nik on 14/09/2025.
 //
 
 import UIKit
 
-class HomeViewController: BaseViewController {
-    var coordinator: HomeCoordinator?
+class TransfreListViewController: UIViewController {
+   // MARK: - ----------------- Properties
+    var coordinator: TransfreListCoordinator?
     var vm: ViewModel?
-    
-    private var showOtherView : UIButton = {
-        let btn = UIButton()
-        btn.setTitle("show Detials view", for: .normal)
-        btn.setBackgroundColor(color: .blue)
-            .closed()
-        return btn
-    }()
     // MARK: - ----------------- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTransferList()
-        setupViews()
+        view.backgroundColor = .systemGreen
     }
 }
 // MARK: - ----------------- Network call API
-extension HomeViewController {
-    private func setupViews() {
-        showOtherView
-            .add(base: self.view)
-            .horizontal(to: self.view, constant: 32)
-            .height(constant: 48)
-            .bottom(to: self.view.safeBottomAnchor, constant: 32)
-            .closed()
-        
-        showOtherView.addTarget(self, action: #selector(showDetailsview), for: .touchUpInside)
-        
-    }
-    @objc private func showDetailsview() {
-        print("tapped btn details view ")
-        self.coordinator?.showDetailsView()
-    }
-    
+extension TransfreListViewController {
     private func fetchTransferList() {
         guard let vm = vm else {
             assertionFailure("ViewModel not injected")
@@ -67,7 +44,7 @@ extension HomeViewController {
 #if DEBUG
 import SwiftUI
 
-struct HomeViewController_preview: PreviewProvider {
+struct TransfreListViewController_preview: PreviewProvider {
     static var previews: some View {
         Group {
             // LightMode
@@ -83,8 +60,8 @@ struct HomeViewController_preview: PreviewProvider {
     }
     // Create VC with injected ViewModel
     static func makePreview() -> some View {
-        let vc = HomeViewController()
-        vc.vm = HomeViewController.ViewModel(provider: HomeDIProviding(networkService: NetworkService()))
+        let vc = TransfreListViewController()
+        vc.vm = TransfreListViewController.ViewModel(provider: TransfreListDIProviding())
         return vc.showPreview()
     }
 }
