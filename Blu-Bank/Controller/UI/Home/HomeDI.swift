@@ -13,13 +13,12 @@ class HomeAssembly: Assembly {
         container.register(HomeDIProvider.self) { _ in
             HomeDIProviding()
         }
-        
         // ViewModel
         container.register(HomeViewController.ViewModel.self) { resolver in
             guard let provider = resolver.resolve(HomeDIProvider.self) else {
                 fatalError("⚠️ HomeDIProvider dependency not found")
             }
-            return HomeViewController.ViewModel(userName: "Hossein", provider: provider)
+            return HomeViewController.ViewModel( provider: provider)
         }
         // View
         container.register(HomeViewController.self) { resolver in
@@ -36,8 +35,14 @@ class HomeAssembly: Assembly {
 // MARK: - ----------------- Home Provider
 protocol HomeDIProvider {
     var isLoading: Bool { get }
+    var networkService: NetworkServiceProtocol { get }
 }
 // MARK: - ----------------- Home Providing
 class HomeDIProviding: HomeDIProvider {
+    // Inject init value
     var isLoading: Bool = false
+    // Inject network service
+    var networkService: NetworkServiceProtocol {
+        NetworkService()
+    }
 }

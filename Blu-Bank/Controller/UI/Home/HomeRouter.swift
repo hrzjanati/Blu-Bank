@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+// MARK: - Transfer Router Example
+enum TransferRouter: NetworkRouter {
+    case transferList(page: Int)
+    
+    var path: String { "transfer-list/" }
+    var method: RequestMethod { .get }
+    var queryParams: [String : Any]? {
+        switch self {
+        case .transferList(let page):
+            return ["page": page]
+        }
+    }
+}

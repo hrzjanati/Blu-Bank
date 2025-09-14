@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
+		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
+		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
+		CE88AB1C2E76B44700852723 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB1B2E76B44700852723 /* NetworkService.swift */; };
+		CE88AB202E76B50C00852723 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB1F2E76B50C00852723 /* NetworkRouter.swift */; };
 		CEAF2D512E758FFF0053C5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */; };
 		CEAF2D782E75958D0053C5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAF2D762E75958D0053C5BA /* Assets.xcassets */; };
 		CEAF2D7B2E75958F0053C5BA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D792E75958F0053C5BA /* HomeViewController.swift */; };
@@ -26,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
+		CE88AB1B2E76B44700852723 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CE88AB1F2E76B50C00852723 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blu-Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAF2D502E758FFF0053C5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEAF2D732E7595680053C5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +67,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE88AB1D2E76B4F200852723 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB192E76B3C700852723 /* ErrorResonse.swift */,
+				CE88AB172E76B2FD00852723 /* ClientError.swift */,
+				CE88AB152E76B1B900852723 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		CE88AB1E2E76B50200852723 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB1F2E76B50C00852723 /* NetworkRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CE88AB212E76B53A00852723 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB1B2E76B44700852723 /* NetworkService.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		CEAF2D382E758FFE0053C5BA = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +173,9 @@
 		CEAF2D852E7599DF0053C5BA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CE88AB212E76B53A00852723 /* Core */,
+				CE88AB1E2E76B50200852723 /* Router */,
+				CE88AB1D2E76B4F200852723 /* Error */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -253,10 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */,
 				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
+				CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */,
 				CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */,
 				CEAF2DAB2E75A6420053C5BA /* HomeRouter.swift in Sources */,
+				CE88AB1C2E76B44700852723 /* NetworkService.swift in Sources */,
 				CEAF2DA52E75A3430053C5BA /* HomeViewModel.swift in Sources */,
+				CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */,
 				CEAF2D7B2E75958F0053C5BA /* HomeViewController.swift in Sources */,
 				CEAF2D8B2E759AB00053C5BA /* BaseViewModel.swift in Sources */,
 				CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */,
@@ -266,6 +309,7 @@
 				CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */,
 				CEAF2DA72E75A6140053C5BA /* HomeModel.swift in Sources */,
 				CEAF2D912E759FA60053C5BA /* Coordinator.swift in Sources */,
+				CE88AB202E76B50C00852723 /* NetworkRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
