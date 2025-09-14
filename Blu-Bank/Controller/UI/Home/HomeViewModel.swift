@@ -10,10 +10,14 @@ import Foundation
 extension HomeViewController {
     class ViewModel : BaseViewModel {
         // MARK: - ----------------- Propertires
-        var userName : String?
+        private let provider: HomeDIProvider
+        var isLoading : Bool
+        let userName : String
         // MARK: - ----------------- Init
-        init(userName : String) {
+        init(userName: String, provider: HomeDIProvider) {
             self.userName = userName
+            self.provider = provider
+            self.isLoading = provider.isLoading
             super.init()
         }
     }
