@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-// MARK: - SwiftUI View
-import SwiftUI
-import Combine
-
 // MARK: - ----------------- SwiftUI View
 struct TransferView: View {
     @StateObject var vm = TransfreListViewController.ViewModel(networkService: NetworkService())
@@ -22,9 +18,8 @@ struct TransferView: View {
                 }) {
                     ForEach(vm.transferList, id: \.id) { item in
                         VStack {
-                            Spacer()
-                            Text(item.person.full_name)
-                            Spacer()
+                            TransferListCell(name: item.person.full_name,
+                                             identifier: item.card.card_number)
                         }
                         .onAppear {
                             vm.fetchNextPageIfNeeded(currentItem: item)

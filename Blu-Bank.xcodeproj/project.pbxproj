@@ -225,6 +225,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		CE19FC6E2E783CFE00CE78F1 /* TransferDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TransferDetails;
+			sourceTree = "<group>";
+		};
 		CE88AB1D2E76B4F200852723 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +340,7 @@
 			children = (
 				CEAF2D832E7596DF0053C5BA /* Luanch */,
 				CE19FC242E76E50C00CE78F1 /* TrasfreList */,
+				CE19FC6E2E783CFE00CE78F1 /* TransferDetails */,
 			);
 			path = UI;
 			sourceTree = "<group>";

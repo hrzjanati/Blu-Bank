@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - ----------------- Network Configuration
 struct NetworkConfig {
-#if BETA
+#if Development
     static let baseURL = "https://api.example.com/"
 #else
     static let baseURL = "https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/"

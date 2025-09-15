@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct TransferListCell: View {
+    @State var name: String?
+    @State var identifier: String?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(systemName: "person.circle")
+                .resizable()
+                .frame(width: 40, height: 40)
+            VStack {
+                Text(name ?? "Not Found")
+                Text(identifier ?? "Not Found")
+            }
+            .padding(.horizontal)
+            Spacer()
+            Image(systemName: "chevron.right")
+                .frame(width: 20, height: 20)
+        }
+        .padding()
+        
     }
 }
 
 #Preview {
-    TransferListCell()
+    TransferListCell(name: "Hossein", identifier: "identifire 1")
 }
