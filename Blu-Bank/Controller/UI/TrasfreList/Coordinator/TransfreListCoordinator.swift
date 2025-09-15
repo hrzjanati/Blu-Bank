@@ -8,7 +8,7 @@
 import UIKit
 import Swinject
 
-class TransfreListCoordinator {
+class TransfreListCoordinator : ObservableObject {
     // MARK: - ----------------- Properties
     var navigationController: UINavigationController?
     let resolver: Resolver
@@ -25,7 +25,15 @@ class TransfreListCoordinator {
         vc.navigationItem.title = "Transfer List"
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     func dismiss() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func showDetails(for transfer: TransfreListModel) {
+        let coordinator = TransfreDetailsCoordinator(navigationController: navigationController!,
+                                                     resolver: resolver,
+                                                     transferItem: transfer)
+        coordinator.start()
     }
 }

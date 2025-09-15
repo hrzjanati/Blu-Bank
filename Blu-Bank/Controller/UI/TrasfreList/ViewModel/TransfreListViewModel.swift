@@ -27,7 +27,7 @@ extension TransfreListViewController {
         init(networkService: NetworkServiceProtocol) {
             self.networkService = networkService
             super.init()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.transferList = TransfreListModel.mock
             })
         }

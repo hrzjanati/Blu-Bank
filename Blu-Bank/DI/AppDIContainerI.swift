@@ -15,7 +15,8 @@ class AppDIContainer {
     private init() {
         let assemblies: [Assembly] = [
             NetworkAssembly(),
-            TransfreListAssembly()
+            TransfreListAssembly(),
+            TransfreDetailsAssembly()
             
         ]
         assemblies.forEach { $0.assemble(container: container) }

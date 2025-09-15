@@ -22,8 +22,11 @@ extension TransfreListViewController {
     ///SetUp View
     private func setUpView() {
         guard let vm = vm else { return }
+        
         let swiftUIView = TransferView(vm: vm)
-        let hosting = UIHostingController<TransferView>(rootView: swiftUIView)
+            .environmentObject(coordinator!)
+        
+        let hosting = UIHostingController(rootView: swiftUIView)
         
         guard let transfreView = hosting.view else { return }
         

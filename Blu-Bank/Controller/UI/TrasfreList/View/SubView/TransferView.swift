@@ -10,27 +10,31 @@ import SwiftUI
 // MARK: - ----------------- SwiftUI View
 struct TransferView: View {
     @StateObject var vm = TransfreListViewController.ViewModel(networkService: NetworkService())
+    @EnvironmentObject var coordinator: TransfreListCoordinator
     
     var body: some View {
         VStack {
-                RefreshableList(isRefreshing: $vm.isRefreshing, onRefresh: {
-                    vm.refreshList()
-                }) {
-                    ForEach(vm.transferList, id: \.id) { item in
-                        VStack {
-                            TransferListCell(name: item.person.full_name,
-                                             identifier: item.card.card_number)
-                        }
-                        .onAppear {
-                            vm.fetchNextPageIfNeeded(currentItem: item)
-                        }
+            RefreshableList(isRefreshing: $vm.isRefreshing, onRefresh: {
+                vm.refreshList()
+            }) {
+                ForEach(vm.transferList, id: \.id) { item in
+                    VStack {
+                        TransferListCell(name: item.person.full_name,
+                                         identifier: item.card.card_number)
                     }
-                    
-                    if vm.isLoading && !vm.isRefreshing {
-                        ProgressView("Loading more...")
-                            .frame(maxWidth: .infinity)
+                    .onTapGesture {
+                        coordinator.showDetails(for: item)
+                    }
+                    .onAppear {
+                        vm.fetchNextPageIfNeeded(currentItem: item)
                     }
                 }
+                
+                if vm.isLoading && !vm.isRefreshing {
+                    ProgressView("Loading more...")
+                        .frame(maxWidth: .infinity)
+                }
+            }
         }
         .onAppear {
             if vm.transferList.isEmpty {
