@@ -9,42 +9,32 @@ import SwiftUI
 
 // MARK: - SwiftUI View
 struct TransferView: View {
-    @ObservedObject var vm: TransfreListViewController.ViewModel
+    @StateObject var vm = TransfreListViewController.ViewModel(networkService: NetworkService())
     
     var body: some View {
-        VStack {
-            if vm.transferList.isEmpty && vm.isLoading {
-                ProgressView("Loading...")
-            } else {
-                List {
-                    ForEach(vm.transferList.indices, id: \.self) { index in
-                        let transfer = vm.transferList[index]
-                        Spacer()
-                        Text(transfer.card.card_number)
-                        Spacer()
-                            .onAppear {
-                                if index == vm.transferList.count - 1 {
-                                    vm.fetchTransferList()
-                                }
-                            }
+        RefreshableList(viewModel: vm, content: {
+            List(vm.transferList, id: \.id) { item in
+                Spacer()
+                Text(item.person.full_name)
+                Spacer()
+                    .onAppear {
+                        vm.fetchNextPageIfNeeded(currentItem: item)
                     }
-                    if vm.isLoading {
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                            Spacer()
-                        }
-                    }
-                }
             }
-        }
+        }, onRefresh: {
+            vm.refreshList()
+        })
         .onAppear {
-            vm.fetchTransferList(reset: true)
+            if vm.transferList.isEmpty {
+                vm.fetchNextPageIfNeeded(currentItem: nil)
+            }
         }
     }
 }
+
 
 // MARK: - ----------------- Preview
 #Preview {
     TransferView(vm: TransfreListViewController.ViewModel(networkService: NetworkService()))
 }
+

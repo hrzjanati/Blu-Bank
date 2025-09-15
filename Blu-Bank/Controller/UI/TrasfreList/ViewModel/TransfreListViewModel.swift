@@ -10,39 +10,62 @@ import Foundation
 import Combine
 
 extension TransfreListViewController {
-    class ViewModel : BaseViewModel {
-        // MARK: - ----------------- Properties
-        @Published private(set) var transferList: [TransfreListModel] = []
-        @Published private(set) var isLoading: Bool = false
-        @Published private(set) var hasMore: Bool = true
+    class ViewModel: BaseViewModel {
+        // MARK: - Properties
+        @Published var transferList: [TransfreListModel] = []
+        @Published var isLoading: Bool = false
+        @Published var isRefreshing: Bool = false
+        
+        var cancellables = Set<AnyCancellable>()
+        private let networkService: NetworkServiceProtocol
         
         private var currentPage: Int = 1
         private let pageSize: Int = 10
-        private let networkService: NetworkServiceProtocol
-        var cancellables = Set<AnyCancellable>()
-        // MARK: - ----------------- Init
+        private var hasMore: Bool = true
+        
+        // MARK: - Init
         init(networkService: NetworkServiceProtocol) {
             self.networkService = networkService
             super.init()
         }
         
-        /// Fetch API Transfre List
-        func fetchTransferList(reset: Bool = false) {
-            guard !isLoading, hasMore else { return }
-            
-            if reset {
-                transferList = []
-                currentPage = 1
-                hasMore = true
+        // MARK: - Fetch Page
+        func fetchNextPageIfNeeded(currentItem: TransfreListModel?) {
+            guard let currentItem else {
+                fetchTransferList(page: 1)
+                return
             }
             
+            guard let lastIndex = transferList.firstIndex(where: { $0.id == currentItem.id }) else { return }
+            let thresholdIndex = transferList.index(transferList.endIndex, offsetBy: -3)
+            
+            guard lastIndex >= thresholdIndex else { return }
+            guard hasMore, !isLoading else { return }
+            
+            fetchTransferList(page: currentPage)
+        }
+        
+        // MARK: - Refresh
+        func refreshList() {
+            currentPage = 1
+            hasMore = true
+            transferList.removeAll()
+            isRefreshing = true
+            fetchTransferList(page: currentPage)
+        }
+        
+        // MARK: - Private Fetch
+        private func fetchTransferList(page: Int) {
             isLoading = true
-            let router = TransferListRouter.transferList(page: currentPage)
+            let router = TransferListRouter.transferList(page: page)
             
             networkService.request(router)
                 .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { [weak self] completion in
+                .handleEvents(receiveCompletion: { [weak self] _ in
                     self?.isLoading = false
+                    self?.isRefreshing = false
+                })
+                .sink(receiveCompletion: { completion in
                     if case .failure(let error) = completion {
                         print("Transfer list error: \(error)")
                     }

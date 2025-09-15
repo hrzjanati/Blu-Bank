@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE19FC202E76DC5700CE78F1 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */; };
-		CE19FC232E76E45600CE78F1 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC222E76E45600CE78F1 /* CancelBag.swift */; };
 		CE19FC432E76E60600CE78F1 /* TransfreListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */; };
 		CE19FC442E76E60600CE78F1 /* TransfreListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */; };
 		CE19FC452E76E60600CE78F1 /* TransfreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */; };
@@ -25,6 +24,7 @@
 		CE19FC652E77008300CE78F1 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC642E77008300CE78F1 /* TransferView.swift */; };
 		CE19FC692E770B7D00CE78F1 /* TransferListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */; };
 		CE19FC6B2E77F51E00CE78F1 /* NetworkDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */; };
+		CE19FC6D2E77FECB00CE78F1 /* UIView+Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */; };
 		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
 		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
 		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
@@ -44,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
-		CE19FC222E76E45600CE78F1 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListCoordinator.swift; sourceTree = "<group>"; };
 		CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListDI.swift; sourceTree = "<group>"; };
 		CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListModel.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		CE19FC642E77008300CE78F1 /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
 		CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListCell.swift; sourceTree = "<group>"; };
 		CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDI.swift; sourceTree = "<group>"; };
+		CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Refreshable.swift"; sourceTree = "<group>"; };
 		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 			children = (
 				CE19FC492E76EA3500CE78F1 /* Extension */,
 				CE19FC1E2E76DC4000CE78F1 /* SwiftUI */,
-				CE19FC212E76E44600CE78F1 /* Combine */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -105,16 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */,
+				CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */,
 			);
 			path = SwiftUI;
-			sourceTree = "<group>";
-		};
-		CE19FC212E76E44600CE78F1 /* Combine */ = {
-			isa = PBXGroup;
-			children = (
-				CE19FC222E76E45600CE78F1 /* CancelBag.swift */,
-			);
-			path = Combine;
 			sourceTree = "<group>";
 		};
 		CE19FC242E76E50C00CE78F1 /* TrasfreList */ = {
@@ -458,7 +450,6 @@
 				CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */,
 				CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */,
 				CE88AB1C2E76B44700852723 /* NetworkService.swift in Sources */,
-				CE19FC232E76E45600CE78F1 /* CancelBag.swift in Sources */,
 				CE19FC202E76DC5700CE78F1 /* UIView+Preview.swift in Sources */,
 				CE19FC4C2E76EA6800CE78F1 /* ExView.swift in Sources */,
 				CE19FC6B2E77F51E00CE78F1 /* NetworkDI.swift in Sources */,
@@ -467,6 +458,7 @@
 				CE19FC692E770B7D00CE78F1 /* TransferListCell.swift in Sources */,
 				CE19FC522E76EAEF00CE78F1 /* ExConstraint.swift in Sources */,
 				CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */,
+				CE19FC6D2E77FECB00CE78F1 /* UIView+Refreshable.swift in Sources */,
 				CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */,
 				CE19FC502E76EABF00CE78F1 /* ExButton.swift in Sources */,
 				CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */,
