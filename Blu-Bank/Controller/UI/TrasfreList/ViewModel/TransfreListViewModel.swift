@@ -27,6 +27,9 @@ extension TransfreListViewController {
         init(networkService: NetworkServiceProtocol) {
             self.networkService = networkService
             super.init()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
+                self.transferList = TransfreListModel.mock
+            })
         }
         
         // MARK: - Fetch Page
@@ -50,9 +53,7 @@ extension TransfreListViewController {
             isRefreshing = true
             currentPage = 1
             hasMore = true
-            
             let router = TransferListRouter.transferList(page: currentPage)
-            
             networkService.request(router)
                 .receive(on: DispatchQueue.main)
                 .handleEvents(receiveCompletion: { [weak self] _ in
@@ -65,27 +66,25 @@ extension TransfreListViewController {
                 }, receiveValue: { [weak self] (transfers: [TransfreListModel]) in
                     guard let self else { return }
                     
-                    let newTransfers = transfers.filter { newTransfer in
-                        !self.transferList.contains { $0.id == newTransfer.id }
-                    }
-                    
-                    if !newTransfers.isEmpty {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            self.transferList.append(contentsOf: newTransfers)
+                    for transfer in transfers {
+                        if let index = self.transferList.firstIndex(where: { $0.id == transfer.id }) {
+                            if self.transferList[index] != transfer {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    self.transferList[index] = transfer
+                                }
+                            }
+                        } else {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                self.transferList.append(transfer)
+                            }
                         }
-                    } else {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            self.transferList = transfers
-                        }
                     }
-                    
-                    if transfers.count < self.pageSize {
-                        self.hasMore = false
-                    }
+                    self.hasMore = transfers.count >= self.pageSize
                     self.currentPage += 1
                 })
                 .store(in: &cancellables)
         }
+        
         
         // MARK: - Private Fetch
         private func fetchTransferList(page: Int) {

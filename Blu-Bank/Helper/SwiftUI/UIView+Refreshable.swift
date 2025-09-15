@@ -4,75 +4,72 @@
 //
 //  Created by Nik on 15/09/2025.
 //
-
 import SwiftUI
-import UIKit
-import Combine
-
-// MARK: - ----------------- RefreshableList Wrapper
-struct RefreshableList<Content: View, VM: ObservableObject>: UIViewControllerRepresentable {
-    let viewModel: VM
-    let content: () -> Content
+// MARK: - ----------------- Pull to Refresh
+struct RefreshableList<Content: View>: UIViewRepresentable {
+    @Binding var isRefreshing: Bool
     let onRefresh: () -> Void
-
-    func makeUIViewController(context: Context) -> UIViewController {
-        let hostingController = UIHostingController(rootView: content())
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(context.coordinator, action: #selector(context.coordinator.refresh(_:)), for: .valueChanged)
-
-        DispatchQueue.main.async {
-            if let scrollView = findScrollView(hostingController.view) {
-                scrollView.refreshControl = refreshControl
-            }
+    let content: Content
+    
+    init(isRefreshing: Binding<Bool>, onRefresh: @escaping () -> Void, @ViewBuilder content: () -> Content) {
+        self._isRefreshing = isRefreshing
+        self.onRefresh = onRefresh
+        self.content = content()
+    }
+    
+    func makeUIView(context: Context) -> UITableView {
+        let tableView = UITableView()
+        tableView.refreshControl = context.coordinator.refreshControl
+        tableView.delegate = context.coordinator
+        tableView.dataSource = context.coordinator
+        context.coordinator.parent = self
+        return tableView
+    }
+    
+    func updateUIView(_ uiView: UITableView, context: Context) {
+        context.coordinator.parent = self
+        uiView.reloadData()
+        if isRefreshing {
+            uiView.refreshControl?.beginRefreshing()
+        } else {
+            uiView.refreshControl?.endRefreshing()
         }
-
-        return hostingController
     }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        (uiViewController as? UIHostingController<Content>)?.rootView = content()
-    }
-
+    
     func makeCoordinator() -> Coordinator {
-        Coordinator(viewModel: viewModel, onRefresh: onRefresh)
+        Coordinator(parent: self)
     }
-
-    private func findScrollView(_ view: UIView) -> UIScrollView? {
-        if let scrollView = view as? UIScrollView { return scrollView }
-        for subview in view.subviews {
-            if let found = findScrollView(subview) { return found }
+    
+    class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
+        var parent: RefreshableList
+        let refreshControl = UIRefreshControl()
+        
+        init(parent: RefreshableList) {
+            self.parent = parent
+            super.init()
+            refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         }
-        return nil
-    }
-
-    class Coordinator: NSObject {
-        let viewModel: VM
-        let onRefresh: () -> Void
-        private var cancellables = Set<AnyCancellable>()
-
-        init(viewModel: VM, onRefresh: @escaping () -> Void) {
-            self.viewModel = viewModel
-            self.onRefresh = onRefresh
+        
+        @objc func refresh() {
+            parent.onRefresh()
         }
-
-        @objc func refresh(_ sender: UIRefreshControl) {
-            onRefresh()
-
-            if let vm = viewModel as? TransfreListViewController.ViewModel {
-                vm.$isRefreshing
-                    .removeDuplicates()
-                    .receive(on: DispatchQueue.main)
-                    .sink { isRefreshing in
-                        if !isRefreshing {
-                            sender.endRefreshing()
-                        }
-                    }
-                    .store(in: &cancellables)
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    sender.endRefreshing()
-                }
-            }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            1
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = UITableViewCell()
+            let hosting = UIHostingController(rootView: parent.content)
+            hosting.view.translatesAutoresizingMaskIntoConstraints = false
+            cell.contentView.addSubview(hosting.view)
+            NSLayoutConstraint.activate([
+                hosting.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
+                hosting.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor),
+                hosting.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
+                hosting.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
+            ])
+            return cell
         }
     }
 }
