@@ -6,46 +6,329 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE19FC202E76DC5700CE78F1 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */; };
+		CE19FC432E76E60600CE78F1 /* TransfreListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */; };
+		CE19FC442E76E60600CE78F1 /* TransfreListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */; };
+		CE19FC452E76E60600CE78F1 /* TransfreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */; };
+		CE19FC462E76E60600CE78F1 /* TransfreListDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */; };
+		CE19FC472E76E60600CE78F1 /* TransfreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC3F2E76E60600CE78F1 /* TransfreListViewController.swift */; };
+		CE19FC482E76E60600CE78F1 /* TransfreListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */; };
+		CE19FC4C2E76EA6800CE78F1 /* ExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC4B2E76EA6800CE78F1 /* ExView.swift */; };
+		CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC4D2E76EAA600CE78F1 /* ExColor.swift */; };
+		CE19FC502E76EABF00CE78F1 /* ExButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC4F2E76EABF00CE78F1 /* ExButton.swift */; };
+		CE19FC522E76EAEF00CE78F1 /* ExConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC512E76EAEF00CE78F1 /* ExConstraint.swift */; };
+		CE19FC542E76EB2B00CE78F1 /* ExStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC532E76EB2B00CE78F1 /* ExStack.swift */; };
+		CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC552E76EB5400CE78F1 /* ExLable.swift */; };
+		CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC582E76EBA700CE78F1 /* String+Extension.swift */; };
+		CE19FC652E77008300CE78F1 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC642E77008300CE78F1 /* TransferView.swift */; };
+		CE19FC692E770B7D00CE78F1 /* TransferListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */; };
+		CE19FC6B2E77F51E00CE78F1 /* NetworkDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */; };
+		CE19FC6D2E77FECB00CE78F1 /* UIView+Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */; };
+		CE19FC7B2E783D6900CE78F1 /* TransfreDetailsDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC712E783D6900CE78F1 /* TransfreDetailsDI.swift */; };
+		CE19FC7C2E783D6900CE78F1 /* TransfreDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC732E783D6900CE78F1 /* TransfreDetailsModel.swift */; };
+		CE19FC7D2E783D6900CE78F1 /* TransfreDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */; };
+		CE19FC7E2E783D6900CE78F1 /* TransfreDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC752E783D6900CE78F1 /* TransfreDetailsRouter.swift */; };
+		CE19FC7F2E783D6900CE78F1 /* TransfreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */; };
+		CE19FC802E783D6900CE78F1 /* TransfreDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6F2E783D6900CE78F1 /* TransfreDetailsCoordinator.swift */; };
+		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
+		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
+		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
+		CE88AB1C2E76B44700852723 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB1B2E76B44700852723 /* NetworkService.swift */; };
+		CE88AB202E76B50C00852723 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB1F2E76B50C00852723 /* NetworkRouter.swift */; };
+		CEAF2D512E758FFF0053C5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */; };
+		CEAF2D782E75958D0053C5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEAF2D762E75958D0053C5BA /* Assets.xcassets */; };
+		CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D7C2E7595910053C5BA /* AppDelegate.swift */; };
+		CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D7D2E7595910053C5BA /* SceneDelegate.swift */; };
+		CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D882E759A780053C5BA /* BaseViewController.swift */; };
+		CEAF2D8B2E759AB00053C5BA /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D8A2E759AB00053C5BA /* BaseViewModel.swift */; };
+		CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D8E2E759F460053C5BA /* AppCoordinator.swift */; };
+		CEAF2D912E759FA60053C5BA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2D902E759FA60053C5BA /* Coordinator.swift */; };
+		CEAF2DAE2E75AB710053C5BA /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = CEAF2DAD2E75AB710053C5BA /* Swinject */; };
+		CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAF2DAF2E75AC660053C5BA /* AppDIContainerI.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
+		CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListCoordinator.swift; sourceTree = "<group>"; };
+		CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListDI.swift; sourceTree = "<group>"; };
+		CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListModel.swift; sourceTree = "<group>"; };
+		CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListRouter.swift; sourceTree = "<group>"; };
+		CE19FC3F2E76E60600CE78F1 /* TransfreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListViewController.swift; sourceTree = "<group>"; };
+		CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreListViewModel.swift; sourceTree = "<group>"; };
+		CE19FC4B2E76EA6800CE78F1 /* ExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExView.swift; sourceTree = "<group>"; };
+		CE19FC4D2E76EAA600CE78F1 /* ExColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExColor.swift; sourceTree = "<group>"; };
+		CE19FC4F2E76EABF00CE78F1 /* ExButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExButton.swift; sourceTree = "<group>"; };
+		CE19FC512E76EAEF00CE78F1 /* ExConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExConstraint.swift; sourceTree = "<group>"; };
+		CE19FC532E76EB2B00CE78F1 /* ExStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStack.swift; sourceTree = "<group>"; };
+		CE19FC552E76EB5400CE78F1 /* ExLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExLable.swift; sourceTree = "<group>"; };
+		CE19FC582E76EBA700CE78F1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CE19FC642E77008300CE78F1 /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
+		CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListCell.swift; sourceTree = "<group>"; };
+		CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDI.swift; sourceTree = "<group>"; };
+		CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Refreshable.swift"; sourceTree = "<group>"; };
+		CE19FC6F2E783D6900CE78F1 /* TransfreDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsCoordinator.swift; sourceTree = "<group>"; };
+		CE19FC712E783D6900CE78F1 /* TransfreDetailsDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsDI.swift; sourceTree = "<group>"; };
+		CE19FC732E783D6900CE78F1 /* TransfreDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsModel.swift; sourceTree = "<group>"; };
+		CE19FC752E783D6900CE78F1 /* TransfreDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsRouter.swift; sourceTree = "<group>"; };
+		CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewController.swift; sourceTree = "<group>"; };
+		CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewModel.swift; sourceTree = "<group>"; };
+		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
+		CE88AB1B2E76B44700852723 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CE88AB1F2E76B50C00852723 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blu-Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAF2D502E758FFF0053C5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEAF2D732E7595680053C5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEAF2D762E75958D0053C5BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEAF2D7C2E7595910053C5BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEAF2D7D2E7595910053C5BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CEAF2D882E759A780053C5BA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CEAF2D8A2E759AB00053C5BA /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		CEAF2D8E2E759F460053C5BA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CEAF2D902E759FA60053C5BA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CEAF2DAF2E75AC660053C5BA /* AppDIContainerI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainerI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CEAF2D532E758FFF0053C5BA /* Exceptions for "Blu-Bank" folder in "Blu-Bank" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CEAF2D402E758FFE0053C5BA /* Blu-Bank */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		CEAF2D432E758FFE0053C5BA /* Blu-Bank */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CEAF2D532E758FFF0053C5BA /* Exceptions for "Blu-Bank" folder in "Blu-Bank" target */,
-			);
-			path = "Blu-Bank";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CEAF2D3E2E758FFE0053C5BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAF2DAE2E75AB710053C5BA /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE19FC1D2E76DC3400CE78F1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC492E76EA3500CE78F1 /* Extension */,
+				CE19FC1E2E76DC4000CE78F1 /* SwiftUI */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		CE19FC1E2E76DC4000CE78F1 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC1F2E76DC5700CE78F1 /* UIView+Preview.swift */,
+				CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		CE19FC242E76E50C00CE78F1 /* TrasfreList */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC402E76E60600CE78F1 /* View */,
+				CE19FC422E76E60600CE78F1 /* ViewModel */,
+				CE19FC3C2E76E60600CE78F1 /* Model */,
+				CE19FC3E2E76E60600CE78F1 /* NetworkRouter */,
+				CE19FC382E76E60600CE78F1 /* Coordinator */,
+				CE19FC3A2E76E60600CE78F1 /* DI */,
+			);
+			path = TrasfreList;
+			sourceTree = "<group>";
+		};
+		CE19FC382E76E60600CE78F1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC372E76E60600CE78F1 /* TransfreListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CE19FC3A2E76E60600CE78F1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC392E76E60600CE78F1 /* TransfreListDI.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CE19FC3C2E76E60600CE78F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC3B2E76E60600CE78F1 /* TransfreListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE19FC3E2E76E60600CE78F1 /* NetworkRouter */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC3D2E76E60600CE78F1 /* TransfreListRouter.swift */,
+			);
+			path = NetworkRouter;
+			sourceTree = "<group>";
+		};
+		CE19FC402E76E60600CE78F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC3F2E76E60600CE78F1 /* TransfreListViewController.swift */,
+				CE19FC632E77007400CE78F1 /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE19FC422E76E60600CE78F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC412E76E60600CE78F1 /* TransfreListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE19FC492E76EA3500CE78F1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC4A2E76EA4F00CE78F1 /* UI+Extension */,
+				CE19FC572E76EB8B00CE78F1 /* Logic+Extension */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE19FC4A2E76EA4F00CE78F1 /* UI+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC4B2E76EA6800CE78F1 /* ExView.swift */,
+				CE19FC4D2E76EAA600CE78F1 /* ExColor.swift */,
+				CE19FC4F2E76EABF00CE78F1 /* ExButton.swift */,
+				CE19FC512E76EAEF00CE78F1 /* ExConstraint.swift */,
+				CE19FC532E76EB2B00CE78F1 /* ExStack.swift */,
+				CE19FC552E76EB5400CE78F1 /* ExLable.swift */,
+			);
+			path = "UI+Extension";
+			sourceTree = "<group>";
+		};
+		CE19FC572E76EB8B00CE78F1 /* Logic+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC582E76EBA700CE78F1 /* String+Extension.swift */,
+			);
+			path = "Logic+Extension";
+			sourceTree = "<group>";
+		};
+		CE19FC632E77007400CE78F1 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC642E77008300CE78F1 /* TransferView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		CE19FC662E770B4D00CE78F1 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC672E770B6D00CE78F1 /* Cell */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		CE19FC672E770B6D00CE78F1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE19FC6E2E783CFE00CE78F1 /* TransferDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC782E783D6900CE78F1 /* View */,
+				CE19FC7A2E783D6900CE78F1 /* ViewModel */,
+				CE19FC742E783D6900CE78F1 /* Model */,
+				CE19FC762E783D6900CE78F1 /* NetworkRouter */,
+				CE19FC702E783D6900CE78F1 /* Coordinator */,
+				CE19FC722E783D6900CE78F1 /* DI */,
+			);
+			path = TransferDetails;
+			sourceTree = "<group>";
+		};
+		CE19FC702E783D6900CE78F1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC6F2E783D6900CE78F1 /* TransfreDetailsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CE19FC722E783D6900CE78F1 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC712E783D6900CE78F1 /* TransfreDetailsDI.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CE19FC742E783D6900CE78F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC732E783D6900CE78F1 /* TransfreDetailsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE19FC762E783D6900CE78F1 /* NetworkRouter */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC752E783D6900CE78F1 /* TransfreDetailsRouter.swift */,
+			);
+			path = NetworkRouter;
+			sourceTree = "<group>";
+		};
+		CE19FC782E783D6900CE78F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE19FC7A2E783D6900CE78F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE88AB1D2E76B4F200852723 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB192E76B3C700852723 /* ErrorResonse.swift */,
+				CE88AB172E76B2FD00852723 /* ClientError.swift */,
+				CE88AB152E76B1B900852723 /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		CE88AB1E2E76B50200852723 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB1F2E76B50C00852723 /* NetworkRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CE88AB212E76B53A00852723 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB1B2E76B44700852723 /* NetworkService.swift */,
+				CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		CEAF2D382E758FFE0053C5BA = {
 			isa = PBXGroup;
 			children = (
-				CEAF2D432E758FFE0053C5BA /* Blu-Bank */,
+				CEAF2D742E7595680053C5BA /* Blu-Bank */,
 				CEAF2D422E758FFE0053C5BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +339,102 @@
 				CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CEAF2D742E7595680053C5BA /* Blu-Bank */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D7E2E7595910053C5BA /* Application */,
+				CEAF2D772E75958D0053C5BA /* Resource */,
+				CEAF2D852E7599DF0053C5BA /* Network */,
+				CEAF2D8C2E759ED50053C5BA /* Coordinator */,
+				CEAF2D8D2E759EF90053C5BA /* DI */,
+				CEAF2D7A2E75958F0053C5BA /* Controller */,
+				CE19FC1D2E76DC3400CE78F1 /* Helper */,
+				CE19FC662E770B4D00CE78F1 /* Component */,
+			);
+			path = "Blu-Bank";
+			sourceTree = "<group>";
+		};
+		CEAF2D772E75958D0053C5BA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D762E75958D0053C5BA /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CEAF2D7A2E75958F0053C5BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D872E759A410053C5BA /* Base */,
+				CEAF2D862E759A290053C5BA /* UI */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEAF2D7E2E7595910053C5BA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D732E7595680053C5BA /* Info.plist */,
+				CEAF2D7C2E7595910053C5BA /* AppDelegate.swift */,
+				CEAF2D7D2E7595910053C5BA /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CEAF2D832E7596DF0053C5BA /* Luanch */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */,
+			);
+			path = Luanch;
+			sourceTree = "<group>";
+		};
+		CEAF2D852E7599DF0053C5BA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE88AB212E76B53A00852723 /* Core */,
+				CE88AB1E2E76B50200852723 /* Router */,
+				CE88AB1D2E76B4F200852723 /* Error */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CEAF2D862E759A290053C5BA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D832E7596DF0053C5BA /* Luanch */,
+				CE19FC242E76E50C00CE78F1 /* TrasfreList */,
+				CE19FC6E2E783CFE00CE78F1 /* TransferDetails */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CEAF2D872E759A410053C5BA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D882E759A780053C5BA /* BaseViewController.swift */,
+				CEAF2D8A2E759AB00053C5BA /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CEAF2D8C2E759ED50053C5BA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2D902E759FA60053C5BA /* Coordinator.swift */,
+				CEAF2D8E2E759F460053C5BA /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CEAF2D8D2E759EF90053C5BA /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CEAF2DAF2E75AC660053C5BA /* AppDIContainerI.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -73,11 +452,9 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				CEAF2D432E758FFE0053C5BA /* Blu-Bank */,
-			);
 			name = "Blu-Bank";
 			packageProductDependencies = (
+				CEAF2DAD2E75AB710053C5BA /* Swinject */,
 			);
 			productName = "Blu-Bank";
 			productReference = CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */;
@@ -107,6 +484,9 @@
 			);
 			mainGroup = CEAF2D382E758FFE0053C5BA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CEAF2D422E758FFE0053C5BA /* Products */;
 			projectDirPath = "";
@@ -122,6 +502,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAF2D782E75958D0053C5BA /* Assets.xcassets in Resources */,
+				CEAF2D512E758FFF0053C5BA /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +514,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE19FC542E76EB2B00CE78F1 /* ExStack.swift in Sources */,
+				CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */,
+				CE19FC652E77008300CE78F1 /* TransferView.swift in Sources */,
+				CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */,
+				CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */,
+				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
+				CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */,
+				CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */,
+				CEAF2DB02E75AC660053C5BA /* AppDIContainerI.swift in Sources */,
+				CE88AB1C2E76B44700852723 /* NetworkService.swift in Sources */,
+				CE19FC202E76DC5700CE78F1 /* UIView+Preview.swift in Sources */,
+				CE19FC4C2E76EA6800CE78F1 /* ExView.swift in Sources */,
+				CE19FC6B2E77F51E00CE78F1 /* NetworkDI.swift in Sources */,
+				CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */,
+				CEAF2D8B2E759AB00053C5BA /* BaseViewModel.swift in Sources */,
+				CE19FC692E770B7D00CE78F1 /* TransferListCell.swift in Sources */,
+				CE19FC7B2E783D6900CE78F1 /* TransfreDetailsDI.swift in Sources */,
+				CE19FC7C2E783D6900CE78F1 /* TransfreDetailsModel.swift in Sources */,
+				CE19FC7D2E783D6900CE78F1 /* TransfreDetailsViewModel.swift in Sources */,
+				CE19FC7E2E783D6900CE78F1 /* TransfreDetailsRouter.swift in Sources */,
+				CE19FC7F2E783D6900CE78F1 /* TransfreDetailsViewController.swift in Sources */,
+				CE19FC802E783D6900CE78F1 /* TransfreDetailsCoordinator.swift in Sources */,
+				CE19FC522E76EAEF00CE78F1 /* ExConstraint.swift in Sources */,
+				CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */,
+				CE19FC6D2E77FECB00CE78F1 /* UIView+Refreshable.swift in Sources */,
+				CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */,
+				CE19FC502E76EABF00CE78F1 /* ExButton.swift in Sources */,
+				CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */,
+				CEAF2D912E759FA60053C5BA /* Coordinator.swift in Sources */,
+				CE19FC432E76E60600CE78F1 /* TransfreListRouter.swift in Sources */,
+				CE19FC442E76E60600CE78F1 /* TransfreListModel.swift in Sources */,
+				CE19FC452E76E60600CE78F1 /* TransfreListViewModel.swift in Sources */,
+				CE19FC462E76E60600CE78F1 /* TransfreListDI.swift in Sources */,
+				CE19FC472E76E60600CE78F1 /* TransfreListViewController.swift in Sources */,
+				CE19FC482E76E60600CE78F1 /* TransfreListCoordinator.swift in Sources */,
+				CE88AB202E76B50C00852723 /* NetworkRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEAF2D4F2E758FFF0053C5BA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEAF2D502E758FFF0053C5BA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CEAF2D552E758FFF0053C5BA /* Debug */ = {
@@ -147,12 +576,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B48Q8RY5GC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Blu-Bank/Info.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/Blu-Bank/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -175,12 +605,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B48Q8RY5GC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Blu-Bank/Info.plist";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/Blu-Bank/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,6 +767,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEAF2DAD2E75AB710053C5BA /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEAF2D392E758FFE0053C5BA /* Project object */;
 }
