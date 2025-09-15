@@ -12,7 +12,9 @@ import Combine
 extension TransfreDetailsViewController {
     class ViewModel : BaseViewModel {
         // MARK: - ----------------- Propertires
-        var transferItem : TransfreListModel
+        @Published var transferItem : TransfreListModel
+        
+        var cancellables = Set<AnyCancellable>()
         // MARK: - ----------------- Init
          init(_ transferItem: TransfreListModel) {
              self.transferItem = transferItem

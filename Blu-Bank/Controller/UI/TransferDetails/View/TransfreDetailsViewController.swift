@@ -8,18 +8,115 @@
 import UIKit
 
 class TransfreDetailsViewController: BaseViewController {
-   // MARK: - ----------------- Properties
+    // MARK: - ----------------- Properties
     var coordinator: TransfreDetailsCoordinator?
     var vm: ViewModel?
+    
+    private var mainStackView = UIStackView()
+    private var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    private var nameLbl : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .label
+        lbl.font = .systemFont(ofSize: 17, weight: .medium)
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    private var emailLbl : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .label
+        lbl.font = .systemFont(ofSize: 17, weight: .medium)
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    private var cardNumberLbl : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .label
+        lbl.font = .systemFont(ofSize: 17, weight: .medium)
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    private var bankNameLbl : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .label
+        lbl.font = .systemFont(ofSize: 17, weight: .medium)
+        lbl.textAlignment = .center
+        return lbl
+    }()
     // MARK: - ----------------- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(vm?.transferItem)
+        setupSubscribtion()
+    }
+}
+// MARK: - ----------------- Subscribtion
+extension TransfreDetailsViewController {
+    private func setupSubscribtion() {
+        guard let vm = vm else { return }
+        vm.$transferItem.sink { [weak self] item in
+            self?.setupView( item.person.avatar
+                             ,item.person.full_name,
+                             item.person.email ?? "",
+                             item.card.card_number,
+                             item.card.card_type)
+        }
+        .store(in: &vm.cancellables)
     }
 }
 // MARK: - ----------------- Network call API
 extension TransfreDetailsViewController {
-    private func fetchTransferList() {
+    private func setupView(_ avatraImageUrl : String?, _ name : String  , _ email : String , _ cardNumber : String , _ bankName : String) {
+        mainStackView
+            .add(base: self.view)
+            .top(to: self.view.safeTopAnchor, constant: 32)
+            .horizontal(to: self.view , constant: 16)
+            .closed()
+        
+        mainStackView
+            .stack(axis: .vertical, alignment: .fill, distribution: .fill , space: 16)
+            .addArrange(views: avatarImageView ,
+                        nameLbl ,
+                        emailLbl ,
+                        cardNumberLbl ,
+                        bankNameLbl)
+            .closed()
+        
+        avatarImageView
+            .right(to: mainStackView.rightAnchor)
+            .height(constant: 96)
+            .closed()
+        
+        avatarImageView.setImage(from: avatraImageUrl)
+        
+        nameLbl
+            .right(to: mainStackView.rightAnchor)
+            .height(constant: 48)
+            .closed()
+        nameLbl.setTitle(string: name).closed()
+        
+        emailLbl
+            .right(to: mainStackView.rightAnchor)
+            .height(constant: 48)
+            .closed()
+        
+        emailLbl.setTitle(string: email).closed()
+        
+        cardNumberLbl
+            .right(to: mainStackView.rightAnchor)
+            .height(constant: 48)
+            .closed()
+        
+        cardNumberLbl.setTitle(string: cardNumber).closed()
+        
+        bankNameLbl
+            .right(to: mainStackView.rightAnchor)
+            .height(constant: 48)
+            .closed()
+        bankNameLbl.setTitle(string: bankName).closed()
     }
 }
 // MARK: - ----------------- Preview
@@ -41,7 +138,7 @@ struct TransfreDetailsViewController_preview: PreviewProvider {
                 .environment(\.colorScheme, .dark)
         }
     }
-
+    
     // Create VC with injected ViewModel
     static func makePreview() -> some View {
         let mock = TransfreListModel(
@@ -58,3 +155,20 @@ struct TransfreDetailsViewController_preview: PreviewProvider {
     }
 }
 #endif
+
+
+extension UIImageView {
+    func setImage(from urlString: String?, placeholder: UIImage? = UIImage(systemName: "person.circle")) {
+        self.image = placeholder
+        guard let urlString = urlString,
+              let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }
+        }.resume()
+    }
+}
