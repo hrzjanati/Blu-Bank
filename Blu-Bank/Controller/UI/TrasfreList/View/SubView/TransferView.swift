@@ -13,35 +13,38 @@ struct TransferView: View {
     
     var body: some View {
         VStack {
-            if vm.transferList.isEmpty {
+            if vm.transferList.isEmpty && vm.isLoading {
                 ProgressView("Loading...")
             } else {
-                List(vm.transferList, id: \.id) { transfer in
-                    Text(transfer.card.card_number)
+                List {
+                    ForEach(vm.transferList.indices, id: \.self) { index in
+                        let transfer = vm.transferList[index]
+                        Spacer()
+                        Text(transfer.card.card_number)
+                        Spacer()
+                            .onAppear {
+                                if index == vm.transferList.count - 1 {
+                                    vm.fetchTransferList()
+                                }
+                            }
+                    }
+                    if vm.isLoading {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    }
                 }
             }
         }
         .onAppear {
-            fetchTransferList()
+            vm.fetchTransferList(reset: true)
         }
-    }
-    /// Fetch Transfer List
-    private func fetchTransferList() {
-        vm.fetchTransferList(1)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished: break
-                case .failure(let error):
-                    print("Error: \(error)")
-                }
-            }, receiveValue: { transfers in
-                vm.transferList = transfers
-            })
-            .store(in: &vm.cancellables)
     }
 }
 
 // MARK: - ----------------- Preview
 #Preview {
-    TransferView(vm: TransfreListViewController.ViewModel(provider: TransfreListDIProviding()))
+    TransferView(vm: TransfreListViewController.ViewModel(networkService: NetworkService()))
 }

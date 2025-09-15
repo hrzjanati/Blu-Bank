@@ -14,6 +14,7 @@ class AppDIContainer {
     // MARK: - ----------------- Init
     private init() {
         let assemblies: [Assembly] = [
+            NetworkAssembly(),
             TransfreListAssembly()
             
         ]

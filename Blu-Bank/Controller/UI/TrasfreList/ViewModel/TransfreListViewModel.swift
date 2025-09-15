@@ -11,34 +11,51 @@ import Combine
 
 extension TransfreListViewController {
     class ViewModel : BaseViewModel {
-        // MARK: - ----------------- Propertires
-        @Published var transferList: [TransfreListModel]
-        @Published var isLoading : Bool
-        @Published var errorMessage: String?
+        // MARK: - ----------------- Properties
+        @Published private(set) var transferList: [TransfreListModel] = []
+        @Published private(set) var isLoading: Bool = false
+        @Published private(set) var hasMore: Bool = true
         
+        private var currentPage: Int = 1
+        private let pageSize: Int = 10
+        private let networkService: NetworkServiceProtocol
         var cancellables = Set<AnyCancellable>()
-        
-        private let provider: TransfreListDIProvider
         // MARK: - ----------------- Init
-        init(provider: TransfreListDIProvider) {
-            self.provider = provider
-            self.isLoading = provider.isLoading
-            transferList = provider.transfreList
+        init(networkService: NetworkServiceProtocol) {
+            self.networkService = networkService
             super.init()
         }
+        
         /// Fetch API Transfre List
-        func fetchTransferList(_ page: Int) -> AnyPublisher<[TransfreListModel], NetworkError> {
-            isLoading = true
-            let router = TransferListRouter.transferList(page: page)
+        func fetchTransferList(reset: Bool = false) {
+            guard !isLoading, hasMore else { return }
             
-            return provider.networkService.request(router)
+            if reset {
+                transferList = []
+                currentPage = 1
+                hasMore = true
+            }
+            
+            isLoading = true
+            let router = TransferListRouter.transferList(page: currentPage)
+            
+            networkService.request(router)
                 .receive(on: DispatchQueue.main)
-                .handleEvents(receiveCompletion: { [weak self] _ in
+                .sink(receiveCompletion: { [weak self] completion in
                     self?.isLoading = false
-                }, receiveCancel: { [weak self] in
-                    self?.isLoading = false
+                    if case .failure(let error) = completion {
+                        print("Transfer list error: \(error)")
+                    }
+                }, receiveValue: { [weak self] (transfers: [TransfreListModel]) in
+                    guard let self else { return }
+                    
+                    if transfers.count < self.pageSize {
+                        self.hasMore = false
+                    }
+                    self.transferList.append(contentsOf: transfers)
+                    self.currentPage += 1
                 })
-                .eraseToAnyPublisher()
+                .store(in: &cancellables)
         }
     }
 }

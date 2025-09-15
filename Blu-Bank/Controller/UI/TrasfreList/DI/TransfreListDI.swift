@@ -11,50 +11,17 @@ import UIKit
 // MARK: - ----------------- Assembly
 class TransfreListAssembly: Assembly {
     func assemble(container: Container) {
-        
-        // MARK: - Provider
-        container.register(TransfreListDIProvider.self) { _ in
-            TransfreListDIProviding()
-        }.inObjectScope(.container) // singleton scope
-        
-   
-        
-        // MARK: - ViewModel
-        container.register(TransfreListViewController.ViewModel.self) { resolver in
-            guard let provider = resolver.resolve(TransfreListDIProvider.self) else {
-                fatalError("⚠️ TransfreListDIProvider dependency not found")
-            }
-            return TransfreListViewController.ViewModel(provider: provider)
-        }
-        
-        // MARK: - ViewController
-        container.register(TransfreListViewController.self) { resolver in
-            let vc = TransfreListViewController()
-            vc.coordinator = resolver.resolve(TransfreListCoordinator.self)
-            vc.vm = resolver.resolve(TransfreListViewController.ViewModel.self)
-            return vc
-        }
-    }
-}
+         // ViewModel
+         container.register(TransfreListViewController.ViewModel.self) { resolver in
+             let networkService = resolver.resolve(NetworkServiceProtocol.self)!
+             return TransfreListViewController.ViewModel(networkService: networkService)
+         }.inObjectScope(.transient)
 
-// MARK: - ----------------- Provider Protocol
-protocol TransfreListDIProvider {
-    var isLoading: Bool { get }
-    var transfreList: [TransfreListModel] { get }
-    var networkService: NetworkServiceProtocol { get }
-}
-
-// MARK: - ----------------- Provider Implementation
-class TransfreListDIProviding: TransfreListDIProvider {
- 
-    let isLoading: Bool
-    var transfreList: [TransfreListModel]
-    let networkService: NetworkServiceProtocol
-    
-    init(isLoading: Bool = false, networkService: NetworkServiceProtocol = NetworkService()) {
-        self.isLoading = isLoading
-        self.networkService = networkService
-        self.transfreList = []
-    }
-    
+         // ViewController
+         container.register(TransfreListViewController.self) { resolver in
+             let vc = TransfreListViewController()
+             vc.vm = resolver.resolve(TransfreListViewController.ViewModel.self)
+             return vc
+         }.inObjectScope(.transient)
+     }
 }

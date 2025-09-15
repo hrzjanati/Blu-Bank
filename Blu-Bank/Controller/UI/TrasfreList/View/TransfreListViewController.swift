@@ -58,7 +58,7 @@ struct TransfreListViewController_preview: PreviewProvider {
     // Create VC with injected ViewModel
     static func makePreview() -> some View {
         let vc = TransfreListViewController()
-        vc.vm = TransfreListViewController.ViewModel(provider: TransfreListDIProviding())
+        vc.vm = TransfreListViewController.ViewModel(networkService: NetworkService())
         return vc.showPreview()
     }
 }
