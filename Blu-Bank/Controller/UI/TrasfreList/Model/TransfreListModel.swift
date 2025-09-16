@@ -31,7 +31,11 @@ struct TransfreListModel: Codable, Identifiable, Equatable {
     let note: String?
     let more_info: MoreInfo
     
-    var id: String { card.card_number }
+    var id = UUID()
+    
+    private enum CodingKeys: String, CodingKey {
+        case person, card, last_transfer, note, more_info
+    }
 }
 
 
