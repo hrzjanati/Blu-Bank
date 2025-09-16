@@ -1,8 +1,8 @@
 //
-//  Transfre.swift
+//  TransfreView.swift
 //  Blu-Bank
 //
-//  Created by Nik on 14/09/2025.
+//  Created by Nik on 16/09/2025.
 //
 
 import SwiftUI
@@ -13,10 +13,7 @@ struct TransferView: View {
     @EnvironmentObject var coordinator: TransfreListCoordinator
     
     var body: some View {
-        VStack {
-            RefreshableList(isRefreshing: $vm.isRefreshing, onRefresh: {
-                vm.refreshList()
-            }) {
+        List {
                 ForEach(vm.transferList, id: \.id) { item in
                     VStack {
                         TransferListCell(name: item.person.full_name,
@@ -34,13 +31,10 @@ struct TransferView: View {
                         }
                     }
                 }
-
-                
                 if vm.isLoading && !vm.isRefreshing {
                     ProgressView("Loading more...")
                         .frame(maxWidth: .infinity)
                 }
-            }
         }
         .onAppear {
             if vm.transferList.isEmpty {
