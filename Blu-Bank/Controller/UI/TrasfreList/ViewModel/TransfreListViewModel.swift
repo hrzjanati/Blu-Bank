@@ -26,8 +26,7 @@ extension TransfreListViewController {
         // MARK: - ----------------- Init
         init(networkService: NetworkServiceProtocol) {
             self.networkService = networkService
-            favoriteList = favoritesManager.load()
-            
+            favoriteList = favoritesManager.all()
         }
     }
     
@@ -96,10 +95,13 @@ extension TransfreListViewController.ViewModel {
 // MARK: - ----------------- Manage Favorite
 extension TransfreListViewController.ViewModel {
     func toggleFavorite(_ item: TransfreListModel) {
-        favoritesManager.toggle(item, in: &favoriteList)
+        favoritesManager.toggle(item)
     }
     
     func isFavorite(_ item: TransfreListModel) -> Bool {
-        favoritesManager.contains(item, in: favoriteList)
+        favoritesManager.isFavorite(item)
+    }
+    func favoriteListUpdate() {
+        favoriteList = favoritesManager.all()
     }
 }

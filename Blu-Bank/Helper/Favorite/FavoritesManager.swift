@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 final class FavoritesManager<T: Identifiable & Codable> {
     private let key: String
     
@@ -14,18 +13,8 @@ final class FavoritesManager<T: Identifiable & Codable> {
         self.key = key
     }
     
-    // MARK: - ----------------- Save
-    func save(_ items: [T]) {
-        do {
-            let data = try JSONEncoder().encode(items)
-            UserDefaults.standard.set(data, forKey: key)
-        } catch {
-            print("Error saving favorites: \(error)")
-        }
-    }
-    
-    // MARK: - ----------------- Load
-    func load() -> [T] {
+    // MARK: - Load from UserDefaults
+    private func loadItems() -> [T] {
         guard let data = UserDefaults.standard.data(forKey: key) else { return [] }
         do {
             return try JSONDecoder().decode([T].self, from: data)
@@ -35,18 +24,35 @@ final class FavoritesManager<T: Identifiable & Codable> {
         }
     }
     
-    // MARK: - ----------------- Toggel Append / Delete
-    func toggle(_ item: T, in items: inout [T]) {
+    // MARK: - Save to UserDefaults
+    private func saveItems(_ items: [T]) {
+        do {
+            let data = try JSONEncoder().encode(items)
+            UserDefaults.standard.set(data, forKey: key)
+        } catch {
+            print("Error saving favorites: \(error)")
+        }
+    }
+    
+    // MARK: - Check if Favorite
+    func isFavorite(_ item: T) -> Bool {
+        let items = loadItems()
+        return items.contains(where: { $0.id == item.id })
+    }
+    
+    // MARK: - Toggle Favorite
+    func toggle(_ item: T) {
+        var items = loadItems()
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items.remove(at: index)
         } else {
             items.append(item)
         }
-        save(items)
+        saveItems(items)
     }
     
-    // MARK: - ----------------- Check Already Exists
-    func contains(_ item: T, in items: [T]) -> Bool {
-        items.contains(where: { $0.id == item.id })
+    // MARK: - Get All Favorites
+    func all() -> [T] {
+        return loadItems()
     }
 }

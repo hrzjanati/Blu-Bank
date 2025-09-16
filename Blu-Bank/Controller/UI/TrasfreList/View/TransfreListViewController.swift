@@ -16,6 +16,11 @@ class TransfreListViewController: BaseViewController {
         super.viewDidLoad()
         setUpView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let vm = vm else { return }
+        vm.favoriteListUpdate()
+    }
 }
 // MARK: - ----------------- Network call API
 extension TransfreListViewController {

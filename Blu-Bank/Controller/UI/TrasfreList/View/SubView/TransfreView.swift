@@ -28,7 +28,8 @@ struct TransferView: View {
                 List {
                     ForEach(vm.transferList, id: \.id) { item in
                         TransferListCell(name: item.person.full_name,
-                                         identifier: "\(item.more_info.total_transfer)")
+                                         identifier: "\(item.more_info.total_transfer)",
+                                         isFavorite: vm.isFavorite(item))
                         .onTapGesture {
                             coordinator.showDetails(for: item)
                         }

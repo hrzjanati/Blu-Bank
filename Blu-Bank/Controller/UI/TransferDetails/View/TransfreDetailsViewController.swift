@@ -19,6 +19,18 @@ class TransfreDetailsViewController: BaseViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
+    private var hstackFavoriteBtn = UIStackView()
+    private var favoriteBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(systemName: "star"), for: .normal)
+        return btn
+    }()
+    private var spacerView: UIView = {
+        let view = UIView()
+        view.setBackground(color: .clear)
+            .closed()
+        return view
+    }()
     private var nameLbl : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .label
@@ -67,7 +79,7 @@ extension TransfreDetailsViewController {
         .store(in: &vm.cancellables)
     }
 }
-// MARK: - ----------------- Network call API
+// MARK: - ----------------- Setup View
 extension TransfreDetailsViewController {
     private func setupView(_ avatraImageUrl : String?, _ name : String  , _ email : String , _ cardNumber : String , _ bankName : String) {
         mainStackView
@@ -77,46 +89,71 @@ extension TransfreDetailsViewController {
             .closed()
         
         mainStackView
-            .stack(axis: .vertical, alignment: .fill, distribution: .fill , space: 16)
-            .addArrange(views: avatarImageView ,
+            .stack(axis: .vertical, alignment: .fill, distribution: .fill , space: 12)
+            .addArrange(views: hstackFavoriteBtn ,
+                        avatarImageView ,
                         nameLbl ,
                         emailLbl ,
                         cardNumberLbl ,
                         bankNameLbl)
             .closed()
-        
+        /// Avatar Image
         avatarImageView
             .right(to: mainStackView.rightAnchor)
             .height(constant: 96)
             .closed()
         
         avatarImageView.setImage(from: avatraImageUrl)
+        /// Favorite Button
+        hstackFavoriteBtn
+            .right(to: mainStackView.rightAnchor)
+            .closed()
         
+        hstackFavoriteBtn
+            .stack(axis: .horizontal, alignment: .fill, distribution: .fill)
+            .addArrange(views: spacerView ,favoriteBtn)
+            .closed()
+        
+        favoriteBtn
+            .top(to: hstackFavoriteBtn.topAnchor)
+            .ratio(constant: 40)
+            .closed()
+        spacerView
+            .top(to: hstackFavoriteBtn.topAnchor)
+            .closed()
+        
+        /// Name
         nameLbl
             .right(to: mainStackView.rightAnchor)
-            .height(constant: 48)
             .closed()
         nameLbl.setTitle(string: name).closed()
-        
+        /// Email
         emailLbl
             .right(to: mainStackView.rightAnchor)
-            .height(constant: 48)
             .closed()
         
         emailLbl.setTitle(string: email).closed()
-        
+        /// Card Number
         cardNumberLbl
             .right(to: mainStackView.rightAnchor)
-            .height(constant: 48)
             .closed()
         
         cardNumberLbl.setTitle(string: cardNumber).closed()
-        
+        /// Bank Name
         bankNameLbl
             .right(to: mainStackView.rightAnchor)
-            .height(constant: 48)
             .closed()
         bankNameLbl.setTitle(string: bankName).closed()
+        
+        favoriteBtn.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
+        guard let vm = vm else { return }
+        favoriteBtn.setImage(UIImage(systemName: vm.isFavorite() ? "star.fill" : "star"), for: .normal)
+    }
+    // MARK: - ----------------- Update Button
+    @objc private func didTapFavorite() {
+        guard let vm = vm else { return }
+        vm.toggleFavorite()
+        favoriteBtn.setImage(UIImage(systemName: vm.isFavorite() ? "star.fill" : "star"), for: .normal)
     }
 }
 // MARK: - ----------------- Preview

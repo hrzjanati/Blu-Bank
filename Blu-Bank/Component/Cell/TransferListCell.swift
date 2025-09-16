@@ -10,7 +10,7 @@ import SwiftUI
 struct TransferListCell: View {
     @State var name: String?
     @State var identifier: String?
-    
+    var isFavorite: Bool?
     var body: some View {
         HStack {
             Image(systemName: "person.circle")
@@ -22,6 +22,10 @@ struct TransferListCell: View {
             }
             .padding(.horizontal)
             Spacer()
+            if isFavorite ?? false {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
+            }
             Image(systemName: "chevron.right")
                 .frame(width: 20, height: 20)
         }
