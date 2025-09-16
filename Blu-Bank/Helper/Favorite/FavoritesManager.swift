@@ -6,14 +6,21 @@
 //
 
 import Foundation
-final class FavoritesManager<T: Identifiable & Codable> {
+import Combine
+
+final class FavoritesManager<T: Identifiable & Codable>: ObservableObject {
+    
+    // MARK: - ----------------- Properties
+    @Published private(set) var items: [T] = []
     private let key: String
     
+    // MARK: - ----------------- Init
     init(key: String) {
         self.key = key
+        self.items = loadItems()
     }
     
-    // MARK: - Load from UserDefaults
+    // MARK: - ----------------- Load Items
     private func loadItems() -> [T] {
         guard let data = UserDefaults.standard.data(forKey: key) else { return [] }
         do {
@@ -24,8 +31,8 @@ final class FavoritesManager<T: Identifiable & Codable> {
         }
     }
     
-    // MARK: - Save to UserDefaults
-    private func saveItems(_ items: [T]) {
+    // MARK: - ----------------- Save Items
+    private func saveItems() {
         do {
             let data = try JSONEncoder().encode(items)
             UserDefaults.standard.set(data, forKey: key)
@@ -34,25 +41,23 @@ final class FavoritesManager<T: Identifiable & Codable> {
         }
     }
     
-    // MARK: - Check if Favorite
+    // MARK: - ----------------- Check Favorite
     func isFavorite(_ item: T) -> Bool {
-        let items = loadItems()
         return items.contains(where: { $0.id == item.id })
     }
     
-    // MARK: - Toggle Favorite
+    // MARK: - ----------------- Toggle Favorite
     func toggle(_ item: T) {
-        var items = loadItems()
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items.remove(at: index)
         } else {
             items.append(item)
         }
-        saveItems(items)
+        saveItems()
     }
     
-    // MARK: - Get All Favorites
+    // MARK: - ----------------- Get All Favorites
     func all() -> [T] {
-        return loadItems()
+        return items
     }
 }

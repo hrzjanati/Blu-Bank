@@ -187,7 +187,7 @@ struct TransfreDetailsViewController_preview: PreviewProvider {
         )
         
         let vc = TransfreDetailsViewController()
-        vc.vm = TransfreDetailsViewController.ViewModel(mock)
+        vc.vm = TransfreDetailsViewController.ViewModel(mock, favoritesManager: FavoritesManager<TransfreListModel>(key: ""))
         return vc.showPreview()
     }
 }

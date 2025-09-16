@@ -23,7 +23,10 @@ class TransfreDetailsCoordinator {
     func start() {
         guard let vc = resolver.resolve(TransfreDetailsViewController.self) else { return }
         vc.coordinator = self
-        vc.vm = .init(transferItem)
+        let favoritesManager = resolver.resolve(FavoritesManager<TransfreListModel>.self)!
+
+        vc.vm = .init(transferItem,
+                      favoritesManager: favoritesManager)
         navigationController?.pushViewController(vc, animated: true)
     }
     func dismiss() {

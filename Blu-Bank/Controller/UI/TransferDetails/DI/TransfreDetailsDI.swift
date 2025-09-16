@@ -9,9 +9,15 @@ import Swinject
 
 class  TransfreDetailsAssembly: Assembly {
     func assemble(container: Container) {
+        // Register FavoritesManager as a singleton
+        container.register(FavoritesManager<TransfreListModel>.self) { _ in
+            FavoritesManager<TransfreListModel>(key: "favorites_list")
+        }
+        .inObjectScope(.container)
         // ViewModel
-        container.register(TransfreDetailsViewController.ViewModel.self) { (_, transfer: TransfreListModel) in
-                 return TransfreDetailsViewController.ViewModel(transfer)
+        container.register(TransfreDetailsViewController.ViewModel.self) { (resolver , transfer: TransfreListModel) in
+            let favoritesManager = resolver.resolve(FavoritesManager<TransfreListModel>.self)!
+            return TransfreDetailsViewController.ViewModel(transfer, favoritesManager: favoritesManager)
              }.inObjectScope(.transient)
 
         

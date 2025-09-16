@@ -9,8 +9,16 @@ import SwiftUI
 
 // MARK: - ----------------- SwiftUI View
 struct TransferView: View {
-    @StateObject var vm = TransfreListViewController.ViewModel(networkService: NetworkService())
+    
+    // MARK: - ----------------- Properties
+    @StateObject var vm: TransfreListViewController.ViewModel
     @EnvironmentObject var coordinator: TransfreListCoordinator
+    @EnvironmentObject var favoritesManager: FavoritesManager<TransfreListModel>
+    
+    // MARK: - ----------------- Init
+    init(vm: TransfreListViewController.ViewModel) {
+        _vm = StateObject(wrappedValue: vm)
+    }
     
     var body: some View {
         VStack {
@@ -25,41 +33,10 @@ struct TransferView: View {
             .padding(.horizontal)
             // iOS 15+ use native List + refreshable
             if #available(iOS 15, *) {
-                List {
-                    ForEach(vm.transferList, id: \.id) { item in
-                        TransferListCell(name: item.person.full_name,
-                                         identifier: "\(item.more_info.total_transfer)",
-                                         isFavorite: vm.isFavorite(item))
-                        .onTapGesture {
-                            coordinator.showDetails(for: item)
-                        }
-                        .onAppear {
-                            loadNextPageIfNeeded(for: item)
-                        }
-                    }
-                    
-                    if vm.isLoading && !vm.isRefreshing {
-                        ProgressView("Loading more ...")
-                            .frame(maxWidth: .infinity)
-                    }
-                }
-                .listStyle(PlainListStyle())
-                .refreshable {
-                    vm.refreshList()
-                }
+                ios15Refresh()
             } else {
                 // iOS 14: use custom RefreshableList
-                RefreshableList(items: $vm.transferList, isRefreshing: $vm.isRefreshing, onRefresh: {
-                    vm.refreshList()
-                }) { item in
-                    TransferListCell(name: item.person.full_name, identifier: item.card.card_number)
-                        .onTapGesture {
-                            coordinator.showDetails(for: item)
-                        }
-                        .onAppear {
-                            loadNextPageIfNeeded(for: item)
-                        }
-                }
+                ios14Refresh()
             }
         }
         .onAppear {
@@ -73,6 +50,48 @@ struct TransferView: View {
         guard let lastItem = vm.transferList.last else { return }
         if item.id == lastItem.id && vm.hasMore && !vm.isLoading {
             vm.fetchNextPage()
+        }
+    }
+    // MARK: - ----------------- iOS 15
+    // iOS 15+ use native List + refreshable
+    @available(iOS 15.0, *)
+    private func ios15Refresh() -> some View {
+        List {
+            ForEach(vm.transferList, id: \.id) { item in
+                TransferListCell(name: item.person.full_name,
+                                 identifier: "\(item.more_info.total_transfer)",
+                                 isFavorite: vm.isFavorite(item))
+                .onTapGesture {
+                    coordinator.showDetails(for: item)
+                }
+                .onAppear {
+                    loadNextPageIfNeeded(for: item)
+                }
+            }
+            
+            if vm.isLoading && !vm.isRefreshing {
+                ProgressView("Loading more ...")
+                    .frame(maxWidth: .infinity)
+            }
+        }
+        .listStyle(PlainListStyle())
+        .refreshable {
+            vm.refreshList()
+        }
+    }
+    // MARK: - ----------------- iOS 14
+    /// iOS 14: use custom RefreshableList
+    private func ios14Refresh() -> some View {
+        RefreshableList(items: $vm.transferList, isRefreshing: $vm.isRefreshing, onRefresh: {
+            vm.refreshList()
+        }) { item in
+            TransferListCell(name: item.person.full_name, identifier: item.card.card_number)
+                .onTapGesture {
+                    coordinator.showDetails(for: item)
+                }
+                .onAppear {
+                    loadNextPageIfNeeded(for: item)
+                }
         }
     }
     // MARK: - ----------------- Favorite List View
@@ -89,7 +108,7 @@ struct TransferView: View {
                     ForEach(vm.favoriteList, id: \.id) { item in
                         TransfreFavoriteCell(name: item.person.full_name, identifier: item.card.card_number)
                             .onTapGesture {
-                                vm.toggleFavorite(item)
+                                coordinator.showDetails(for: item)
                             }
                     }
                 }
@@ -102,7 +121,8 @@ struct TransferView: View {
 
 // MARK: - ----------------- Preview
 #Preview {
-    let vm = TransfreListViewController.ViewModel(networkService: NetworkService())
-    return TransferView()
-        .environmentObject(vm)
+    let vm = TransfreListViewController.ViewModel(networkService: NetworkService(), favoritesManager: FavoritesManager<TransfreListModel>(key: ""))
+    TransferView(vm: TransfreListViewController.ViewModel(networkService:NetworkService(),
+                                                          favoritesManager: FavoritesManager<TransfreListModel>(key: "")))
+    .environmentObject(vm)
 }
