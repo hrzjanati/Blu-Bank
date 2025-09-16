@@ -32,6 +32,7 @@
 		CE19FC802E783D6900CE78F1 /* TransfreDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6F2E783D6900CE78F1 /* TransfreDetailsCoordinator.swift */; };
 		CE57CBA42E7955A4004C4C4E /* TransfreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA32E7955A4004C4C4E /* TransfreView.swift */; };
 		CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */; };
+		CE57CBA92E798128004C4C4E /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA82E798128004C4C4E /* FavoritesManager.swift */; };
 		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
 		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
 		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
@@ -75,6 +76,7 @@
 		CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewModel.swift; sourceTree = "<group>"; };
 		CE57CBA32E7955A4004C4C4E /* TransfreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreView.swift; sourceTree = "<group>"; };
 		CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreFavoriteCell.swift; sourceTree = "<group>"; };
+		CE57CBA82E798128004C4C4E /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				CE19FC492E76EA3500CE78F1 /* Extension */,
 				CE19FC1E2E76DC4000CE78F1 /* SwiftUI */,
+				CE57CBA72E798116004C4C4E /* Favorite */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -299,6 +302,14 @@
 				CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE57CBA72E798116004C4C4E /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				CE57CBA82E798128004C4C4E /* FavoritesManager.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		CE88AB1D2E76B4F200852723 /* Error */ = {
@@ -522,6 +533,7 @@
 				CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */,
 				CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */,
 				CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */,
+				CE57CBA92E798128004C4C4E /* FavoritesManager.swift in Sources */,
 				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
 				CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */,
 				CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */,

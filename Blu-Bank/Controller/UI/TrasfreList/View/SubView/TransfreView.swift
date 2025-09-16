@@ -14,8 +14,9 @@ struct TransferView: View {
     
     var body: some View {
         VStack {
-            favoriteList()
-            
+            if !vm.favoriteList.isEmpty {
+                favoriteList()
+            }
             HStack {
                 Text("All")
                     .font(.title)
@@ -26,13 +27,14 @@ struct TransferView: View {
             if #available(iOS 15, *) {
                 List {
                     ForEach(vm.transferList, id: \.id) { item in
-                        TransferListCell(name: item.person.full_name, identifier: item.card.card_number)
-                            .onTapGesture {
-                                coordinator.showDetails(for: item)
-                            }
-                            .onAppear {
-                                loadNextPageIfNeeded(for: item)
-                            }
+                        TransferListCell(name: item.person.full_name,
+                                         identifier: "\(item.more_info.total_transfer)")
+                        .onTapGesture {
+                            coordinator.showDetails(for: item)
+                        }
+                        .onAppear {
+                            loadNextPageIfNeeded(for: item)
+                        }
                     }
                     
                     if vm.isLoading && !vm.isRefreshing {
@@ -65,14 +67,14 @@ struct TransferView: View {
             }
         }
     }
-    
+    // MARK: - ----------------- Load Next Page
     private func loadNextPageIfNeeded(for item: TransfreListModel) {
         guard let lastItem = vm.transferList.last else { return }
         if item.id == lastItem.id && vm.hasMore && !vm.isLoading {
             vm.fetchNextPage()
         }
     }
-    
+    // MARK: - ----------------- Favorite List View
     private func favoriteList() -> some View {
         VStack {
             HStack {
@@ -83,11 +85,12 @@ struct TransferView: View {
             .padding(.horizontal)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
-                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
-                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
-                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
-                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
+                    ForEach(vm.favoriteList, id: \.id) { item in
+                        TransfreFavoriteCell(name: item.person.full_name, identifier: item.card.card_number)
+                            .onTapGesture {
+                                vm.toggleFavorite(item)
+                            }
+                    }
                 }
                 .padding(.horizontal, 16)
             }
