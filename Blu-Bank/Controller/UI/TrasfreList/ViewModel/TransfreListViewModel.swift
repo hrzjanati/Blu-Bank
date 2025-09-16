@@ -10,53 +10,41 @@ import SwiftUI
 
 extension TransfreListViewController {
     class ViewModel: BaseViewModel {
-        // MARK: - Properties
         @Published var transferList: [TransfreListModel] = []
-        @Published var isLoading: Bool = false
-        @Published var isRefreshing: Bool = false
+        @Published var isLoading = false
+        @Published var isRefreshing = false
         
-        var cancellables = Set<AnyCancellable>()
+        private var cancellables = Set<AnyCancellable>()
         private let networkService: NetworkServiceProtocol
         
-        private var currentPage: Int = 1
-        private let pageSize: Int = 10
-        private var hasMore: Bool = true
+        private(set) var currentPage = 1
+        private(set) var hasMore = true
+        private let pageSize = 10
         
-        // MARK: - Init
         init(networkService: NetworkServiceProtocol) {
             self.networkService = networkService
-            super.init()
         }
         
-        // MARK: - Fetch Page
-        func fetchNextPageIfNeeded(currentItem: TransfreListModel?) {
-            if transferList.isEmpty {
-                fetchTransferList(page: 1)
-                return
-            }
-            
-            guard let currentItem else { return }
-            guard let lastIndex = transferList.firstIndex(where: { $0.id == currentItem.id }) else { return }
-            
-            let thresholdIndex = transferList.index(transferList.endIndex, offsetBy: -3)
-            guard lastIndex >= thresholdIndex else { return }
-            guard hasMore, !isLoading else { return }
-            
-            fetchTransferList(page: currentPage)
-        }
-        
-        // MARK: - Refresh
-        func refreshList() {
-            isRefreshing = true
+        func loadFirstPage() {
             currentPage = 1
             hasMore = true
             transferList.removeAll()
             fetchTransferList(page: currentPage)
-            isRefreshing = false
         }
         
+        func fetchNextPage() {
+            guard hasMore, !isLoading else { return }
+            fetchTransferList(page: currentPage)
+        }
         
-        // MARK: - Private Fetch
+        func refreshList() {
+            isRefreshing = true
+            loadFirstPage()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.isRefreshing = false
+            }
+        }
+        
         private func fetchTransferList(page: Int) {
             isLoading = true
             let router = TransferListRouter.transferList(page: page)
@@ -90,6 +78,7 @@ extension TransfreListViewController {
                     if transfers.count < self.pageSize {
                         self.hasMore = false
                     }
+                    
                     self.currentPage += 1
                 })
                 .store(in: &cancellables)
