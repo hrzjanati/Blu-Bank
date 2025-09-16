@@ -26,9 +26,15 @@ struct TransferView: View {
                         coordinator.showDetails(for: item)
                     }
                     .onAppear {
-                        vm.fetchNextPageIfNeeded(currentItem: item)
+                        if let index = vm.transferList.firstIndex(where: { $0.id == item.id }) {
+                            let thresholdIndex = vm.transferList.index(vm.transferList.endIndex, offsetBy: -3)
+                            if index >= thresholdIndex {
+                                vm.fetchNextPageIfNeeded(currentItem: item)
+                            }
+                        }
                     }
                 }
+
                 
                 if vm.isLoading && !vm.isRefreshing {
                     ProgressView("Loading more...")
