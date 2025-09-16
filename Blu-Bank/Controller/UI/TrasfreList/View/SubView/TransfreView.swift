@@ -14,6 +14,14 @@ struct TransferView: View {
     
     var body: some View {
         VStack {
+            favoriteList()
+            
+            HStack {
+                Text("All")
+                    .font(.title)
+                Spacer()
+            }
+            .padding(.horizontal)
             // iOS 15+ use native List + refreshable
             if #available(iOS 15, *) {
                 List {
@@ -28,7 +36,7 @@ struct TransferView: View {
                     }
                     
                     if vm.isLoading && !vm.isRefreshing {
-                        ProgressView("Loading more...")
+                        ProgressView("Loading more ...")
                             .frame(maxWidth: .infinity)
                     }
                 }
@@ -62,6 +70,28 @@ struct TransferView: View {
         guard let lastItem = vm.transferList.last else { return }
         if item.id == lastItem.id && vm.hasMore && !vm.isLoading {
             vm.fetchNextPage()
+        }
+    }
+    
+    private func favoriteList() -> some View {
+        VStack {
+            HStack {
+                Text("Favorites")
+                    .font(.title)
+                Spacer()
+            }
+            .padding(.horizontal)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
+                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
+                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
+                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
+                    TransfreFavoriteCell(name: "hosein", identifier: "uusj 4")
+                }
+                .padding(.horizontal, 16)
+            }
+            .frame(height: 120)
         }
     }
 }

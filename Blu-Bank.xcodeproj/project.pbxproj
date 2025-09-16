@@ -31,6 +31,7 @@
 		CE19FC7F2E783D6900CE78F1 /* TransfreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */; };
 		CE19FC802E783D6900CE78F1 /* TransfreDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6F2E783D6900CE78F1 /* TransfreDetailsCoordinator.swift */; };
 		CE57CBA42E7955A4004C4C4E /* TransfreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA32E7955A4004C4C4E /* TransfreView.swift */; };
+		CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */; };
 		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
 		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
 		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
@@ -73,6 +74,7 @@
 		CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewController.swift; sourceTree = "<group>"; };
 		CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewModel.swift; sourceTree = "<group>"; };
 		CE57CBA32E7955A4004C4C4E /* TransfreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreView.swift; sourceTree = "<group>"; };
+		CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreFavoriteCell.swift; sourceTree = "<group>"; };
 		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */,
+				CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */,
 				CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */,
 				CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */,
+				CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */,
 				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
 				CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */,
 				CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */,
