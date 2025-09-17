@@ -33,6 +33,7 @@
 		CE57CBA42E7955A4004C4C4E /* TransfreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA32E7955A4004C4C4E /* TransfreView.swift */; };
 		CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */; };
 		CE57CBA92E798128004C4C4E /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA82E798128004C4C4E /* FavoritesManager.swift */; };
+		CE57CBAC2E7AA70A004C4C4E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE57CBAB2E7AA70A004C4C4E /* Kingfisher */; };
 		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
 		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
 		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
@@ -100,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE57CBAC2E7AA70A004C4C4E /* Kingfisher in Frameworks */,
 				CEAF2DAE2E75AB710053C5BA /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +471,7 @@
 			name = "Blu-Bank";
 			packageProductDependencies = (
 				CEAF2DAD2E75AB710053C5BA /* Swinject */,
+				CE57CBAB2E7AA70A004C4C4E /* Kingfisher */,
 			);
 			productName = "Blu-Bank";
 			productReference = CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */;
@@ -500,6 +503,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */,
+				CE57CBAA2E7AA70A004C4C4E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CEAF2D422E758FFE0053C5BA /* Products */;
@@ -785,6 +789,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE57CBAA2E7AA70A004C4C4E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.5.0;
+			};
+		};
 		CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -796,6 +808,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE57CBAB2E7AA70A004C4C4E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE57CBAA2E7AA70A004C4C4E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		CEAF2DAD2E75AB710053C5BA /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */;

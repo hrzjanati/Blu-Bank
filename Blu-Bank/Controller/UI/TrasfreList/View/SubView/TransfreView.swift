@@ -14,10 +14,12 @@ struct TransferView: View {
     @StateObject var vm: TransfreListViewController.ViewModel
     @EnvironmentObject var coordinator: TransfreListCoordinator
     @EnvironmentObject var favoritesManager: FavoritesManager<TransfreListModel>
-    
+     var networkService: NetworkServiceProtocol
+    private var avatarImage : UIImageView?
     // MARK: - ----------------- Init
-    init(vm: TransfreListViewController.ViewModel) {
+    init(vm: TransfreListViewController.ViewModel , networkService: NetworkServiceProtocol) {
         _vm = StateObject(wrappedValue: vm)
+        self.networkService = networkService
     }
     
     var body: some View {
@@ -60,6 +62,8 @@ struct TransferView: View {
             ForEach(vm.transferList, id: \.id) { item in
                 TransferListCell(name: item.person.full_name,
                                  identifier: "\(item.more_info.total_transfer)",
+                                 avatarURL:  item.person.avatar,
+                                 networkService: self.networkService ,
                                  isFavorite: vm.isFavorite(item))
                 .onTapGesture {
                     coordinator.showDetails(for: item)
@@ -85,7 +89,11 @@ struct TransferView: View {
         RefreshableList(items: $vm.transferList, isRefreshing: $vm.isRefreshing, onRefresh: {
             vm.refreshList()
         }) { item in
-            TransferListCell(name: item.person.full_name, identifier: item.card.card_number)
+            TransferListCell(name: item.person.full_name,
+                             identifier: "\(item.more_info.total_transfer)",
+                             avatarURL:  item.person.avatar,
+                             networkService: self.networkService ,
+                             isFavorite: vm.isFavorite(item))
                 .onTapGesture {
                     coordinator.showDetails(for: item)
                 }
@@ -123,6 +131,6 @@ struct TransferView: View {
 #Preview {
     let vm = TransfreListViewController.ViewModel(networkService: NetworkService(), favoritesManager: FavoritesManager<TransfreListModel>(key: ""))
     TransferView(vm: TransfreListViewController.ViewModel(networkService:NetworkService(),
-                                                          favoritesManager: FavoritesManager<TransfreListModel>(key: "")))
+                                                          favoritesManager: FavoritesManager<TransfreListModel>(key: "")), networkService: NetworkService())
     .environmentObject(vm)
 }

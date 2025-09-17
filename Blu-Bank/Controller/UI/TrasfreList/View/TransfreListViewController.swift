@@ -23,7 +23,7 @@ extension TransfreListViewController {
     private func setUpView() {
         guard let vm = vm, let coordinator = coordinator else { return }
           
-          let swiftUIView = TransferView(vm: vm)
+        let swiftUIView = TransferView(vm: vm, networkService: vm.networkService)
               .environmentObject(coordinator)
               .environmentObject(vm.favoritesManager)
           

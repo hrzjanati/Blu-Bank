@@ -7,9 +7,12 @@
 
 import Foundation
 import Combine
+import Kingfisher
+import UIKit
 // MARK: - ----------------- Protocol NetworkService
 protocol NetworkServiceProtocol {
     func request<T: Decodable>(_ endpoint: NetworkRouter) -> AnyPublisher<T, NetworkError>
+    func requestImage(_ urlString: String) -> AnyPublisher<UIImage?, Never>
 }
 // MARK: - ----------------- Network Service
 final class NetworkService {
@@ -60,5 +63,23 @@ extension NetworkService : NetworkServiceProtocol {
                 NetworkError(description: error.localizedDescription, code: (error as NSError).code)
             }
             .eraseToAnyPublisher()
+    }
+    /// Download image using Kingfisher and return as Publisher<UIImage?>
+    func requestImage(_ urlString: String) -> AnyPublisher<UIImage?, Never> {
+        guard let url = URL(string: urlString) else {
+            return Just(nil).eraseToAnyPublisher()
+        }
+        
+        return Future<UIImage?, Never> { promise in
+            KingfisherManager.shared.retrieveImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    promise(.success(value.image))
+                case .failure:
+                    promise(.success(nil))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }

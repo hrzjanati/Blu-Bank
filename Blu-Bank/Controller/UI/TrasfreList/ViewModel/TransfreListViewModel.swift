@@ -17,12 +17,13 @@ extension TransfreListViewController {
         @Published var isRefreshing = false
         
         private var cancellables = Set<AnyCancellable>()
-        private let networkService: NetworkServiceProtocol
         private(set) var currentPage = 1
         private(set) var hasMore = true
         private let pageSize = 10
-        
+      
+        let networkService: NetworkServiceProtocol
         let favoritesManager: FavoritesManager<TransfreListModel>
+        
         // MARK: - ----------------- Init
         init(networkService: NetworkServiceProtocol,
              favoritesManager: FavoritesManager<TransfreListModel>) {
