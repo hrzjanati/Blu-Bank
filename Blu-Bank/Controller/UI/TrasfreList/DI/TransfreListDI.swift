@@ -30,7 +30,5 @@ class TransfreListAssembly: Assembly {
             vc.vm = resolver.resolve(TransfreListViewController.ViewModel.self)
             return vc
         }.inObjectScope(.transient)
-        
-        
     }
 }

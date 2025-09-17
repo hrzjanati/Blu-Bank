@@ -16,12 +16,26 @@ extension TransfreDetailsViewController {
         
         private let favoritesManager: FavoritesManager<TransfreListModel>
         
+        let networkService: NetworkServiceProtocol
         var cancellables = Set<AnyCancellable>()
         // MARK: - ----------------- Init
-        init(_ transferItem: TransfreListModel , favoritesManager : FavoritesManager<TransfreListModel> ) {
+        init(_ transferItem: TransfreListModel ,
+             favoritesManager : FavoritesManager<TransfreListModel> ,
+             networkService: NetworkServiceProtocol) {
             self.transferItem = transferItem
             self.favoritesManager = favoritesManager
+            self.networkService = networkService
             super.init()
+        }
+        // MARK: - ----------------- Fetch Image
+        func fetchAvatarImage(completion: @escaping (UIImage?) -> Void) {
+            let urlString = transferItem.person.avatar
+            networkService.requestImage(urlString)
+                .receive(on: DispatchQueue.main)
+                .sink { image in
+                    completion(image ?? UIImage(systemName: "person.circle"))
+                }
+                .store(in: &cancellables)
         }
     }
 }

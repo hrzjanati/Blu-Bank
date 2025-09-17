@@ -65,6 +65,7 @@ struct TransferView: View {
                                  avatarURL:  item.person.avatar,
                                  networkService: self.networkService ,
                                  isFavorite: vm.isFavorite(item))
+                .contentShape(Rectangle())
                 .onTapGesture {
                     coordinator.showDetails(for: item)
                 }
@@ -94,6 +95,7 @@ struct TransferView: View {
                              avatarURL:  item.person.avatar,
                              networkService: self.networkService ,
                              isFavorite: vm.isFavorite(item))
+            .contentShape(Rectangle()) 
             .onTapGesture {
                 coordinator.showDetails(for: item)
             }

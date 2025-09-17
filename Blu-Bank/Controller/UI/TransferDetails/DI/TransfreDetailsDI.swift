@@ -6,27 +6,31 @@
 //
 
 import Swinject
+import UIKit
 
-class  TransfreDetailsAssembly: Assembly {
+class TransfreDetailsAssembly: Assembly {
     func assemble(container: Container) {
-        // Register FavoritesManager as a singleton
+        // Register FavoritesManager as singleton
         container.register(FavoritesManager<TransfreListModel>.self) { _ in
             FavoritesManager<TransfreListModel>(key: "favorites_list")
-        }
-        .inObjectScope(.container)
-        // ViewModel
-        container.register(TransfreDetailsViewController.ViewModel.self) { (resolver , transfer: TransfreListModel) in
-            let favoritesManager = resolver.resolve(FavoritesManager<TransfreListModel>.self)!
-            return TransfreDetailsViewController.ViewModel(transfer, favoritesManager: favoritesManager)
-             }.inObjectScope(.transient)
-
+        }.inObjectScope(.container)
         
-        // View
-        container.register( TransfreDetailsViewController.self) { resolver in
-            let vc =  TransfreDetailsViewController()
-            vc.coordinator = resolver.resolve( TransfreDetailsCoordinator.self)
-            vc.vm = resolver.resolve( TransfreDetailsViewController.ViewModel.self)
-            return vc
+        // Register NetworkService
+        container.register(NetworkServiceProtocol.self) { _ in
+            NetworkService()
+        }.inObjectScope(.container)
+        
+        // Register ViewController (without vm)
+        container.register(TransfreDetailsViewController.self) { _ in
+            TransfreDetailsViewController()
+        }.inObjectScope(.transient)
+        
+        // Register Coordinator
+        container.register(TransfreDetailsCoordinator.self) { (resolver, navigationController: UINavigationController, transferItem: TransfreListModel) in
+            let coordinator = TransfreDetailsCoordinator(navigationController: navigationController,
+                                                         resolver: resolver,
+                                                         transferItem: transferItem)
+            return coordinator
         }.inObjectScope(.transient)
     }
 }

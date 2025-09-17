@@ -82,6 +82,7 @@ extension TransfreDetailsViewController {
 // MARK: - ----------------- Setup View
 extension TransfreDetailsViewController {
     private func setupView(_ avatraImageUrl : String?, _ name : String  , _ email : String , _ cardNumber : String , _ bankName : String) {
+        guard let vm = vm else { return }
         mainStackView
             .add(base: self.view)
             .top(to: self.view.safeTopAnchor, constant: 32)
@@ -103,7 +104,9 @@ extension TransfreDetailsViewController {
             .height(constant: 96)
             .closed()
         
-        avatarImageView.setImage(from: avatraImageUrl)
+        vm.fetchAvatarImage { [weak self] image in
+            self?.avatarImageView.image = image
+        }
         /// Favorite Button
         hstackFavoriteBtn
             .right(to: mainStackView.rightAnchor)
@@ -145,15 +148,18 @@ extension TransfreDetailsViewController {
             .closed()
         bankNameLbl.setTitle(string: bankName).closed()
         
-        favoriteBtn.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
-        guard let vm = vm else { return }
-        favoriteBtn.setImage(UIImage(systemName: vm.isFavorite() ? "star.fill" : "star"), for: .normal)
+        favoriteBtn.addTarget(self,
+                              action: #selector(didTapFavorite),
+                              for: .touchUpInside)
+        favoriteBtn.setImage(UIImage(systemName: vm.isFavorite() ? "star.fill" : "star"),
+                             for: .normal)
     }
     // MARK: - ----------------- Update Button
     @objc private func didTapFavorite() {
         guard let vm = vm else { return }
         vm.toggleFavorite()
-        favoriteBtn.setImage(UIImage(systemName: vm.isFavorite() ? "star.fill" : "star"), for: .normal)
+        favoriteBtn.setImage(UIImage(systemName: vm.isFavorite() ? "star.fill" : "star"),
+                             for: .normal)
     }
 }
 // MARK: - ----------------- Preview
@@ -179,33 +185,21 @@ struct TransfreDetailsViewController_preview: PreviewProvider {
     // Create VC with injected ViewModel
     static func makePreview() -> some View {
         let mock = TransfreListModel(
-            person: .init(full_name: "John Doe", email: "john@doe.com", avatar: ""),
-            card: .init(card_number: "1234-5678-9012-3456", card_type: "MasterCard"),
+            person: .init(full_name: "John Doe",
+                          email: "john@doe.com",
+                          avatar: ""),
+            card: .init(card_number: "1234-5678-9012-3456",
+                        card_type: "MasterCard"),
             last_transfer: "2025-09-15",
             note: "Dinner payment",
-            more_info: .init(number_of_transfers: 12, total_transfer: 5000)
+            more_info: .init(number_of_transfers: 12,
+                             total_transfer: 5000)
         )
         
         let vc = TransfreDetailsViewController()
-        vc.vm = TransfreDetailsViewController.ViewModel(mock, favoritesManager: FavoritesManager<TransfreListModel>(key: ""))
+        vc.vm = TransfreDetailsViewController.ViewModel(mock, favoritesManager: FavoritesManager<TransfreListModel>(key: ""),
+                                                        networkService: NetworkService())
         return vc.showPreview()
     }
 }
 #endif
-
-
-extension UIImageView {
-    func setImage(from urlString: String?, placeholder: UIImage? = UIImage(systemName: "person.circle")) {
-        self.image = placeholder
-        guard let urlString = urlString,
-              let url = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.image = image
-                }
-            }
-        }.resume()
-    }
-}
