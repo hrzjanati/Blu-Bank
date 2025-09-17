@@ -14,7 +14,7 @@ struct TransferView: View {
     @StateObject var vm: TransfreListViewController.ViewModel
     @EnvironmentObject var coordinator: TransfreListCoordinator
     @EnvironmentObject var favoritesManager: FavoritesManager<TransfreListModel>
-     var networkService: NetworkServiceProtocol
+    var networkService: NetworkServiceProtocol
     private var avatarImage : UIImageView?
     // MARK: - ----------------- Init
     init(vm: TransfreListViewController.ViewModel , networkService: NetworkServiceProtocol) {
@@ -94,12 +94,12 @@ struct TransferView: View {
                              avatarURL:  item.person.avatar,
                              networkService: self.networkService ,
                              isFavorite: vm.isFavorite(item))
-                .onTapGesture {
-                    coordinator.showDetails(for: item)
-                }
-                .onAppear {
-                    loadNextPageIfNeeded(for: item)
-                }
+            .onTapGesture {
+                coordinator.showDetails(for: item)
+            }
+            .onAppear {
+                loadNextPageIfNeeded(for: item)
+            }
         }
     }
     // MARK: - ----------------- Favorite List View
@@ -114,7 +114,10 @@ struct TransferView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(vm.favoriteList, id: \.id) { item in
-                        TransfreFavoriteCell(name: item.person.full_name, identifier: item.card.card_number)
+                        TransfreFavoriteCell(name: item.person.full_name,
+                                             identifier: item.card.card_number,
+                                             avatarURL:  item.person.avatar ,
+                                             networkService: self.networkService)
                             .onTapGesture {
                                 coordinator.showDetails(for: item)
                             }
