@@ -15,7 +15,7 @@ extension TransfreDetailsViewController {
         @Published var transferItem : TransfreListModel
         
         private let favoritesManager: FavoritesManager<TransfreListModel>
-
+        
         var cancellables = Set<AnyCancellable>()
         // MARK: - ----------------- Init
         init(_ transferItem: TransfreListModel , favoritesManager : FavoritesManager<TransfreListModel> ) {
@@ -23,16 +23,15 @@ extension TransfreDetailsViewController {
             self.favoritesManager = favoritesManager
             super.init()
         }
-        func isFavorite() -> Bool {
-            return favoritesManager.isFavorite(transferItem)
-        }
-        
-        func toggleFavorite() {
-            favoritesManager.toggle(transferItem)
-        }
     }
 }
 // MARK: - ----------------- Favorite Manager
 extension TransfreDetailsViewController.ViewModel {
+    func isFavorite() -> Bool {
+        return favoritesManager.isFavorite(transferItem)
+    }
     
+    func toggleFavorite() {
+        favoritesManager.toggle(transferItem)
+    }
 }
