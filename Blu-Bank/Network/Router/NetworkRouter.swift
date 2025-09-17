@@ -12,7 +12,7 @@ struct NetworkConfig {
 #if Development
     static let baseURL = "https://api.example.com/"
 #else
-    static let baseURL = "https://4e6774cc-4d63-41b2-8003-336545c0a86d.mock.pstmn.io/"
+    static let baseURL = "https://fec463ef-0248-4aee-9074-3f8dd8d94d32.mock.pstmn.io/"
 #endif
     
 }

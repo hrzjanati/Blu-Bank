@@ -21,7 +21,6 @@
 		CE19FC542E76EB2B00CE78F1 /* ExStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC532E76EB2B00CE78F1 /* ExStack.swift */; };
 		CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC552E76EB5400CE78F1 /* ExLable.swift */; };
 		CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC582E76EBA700CE78F1 /* String+Extension.swift */; };
-		CE19FC652E77008300CE78F1 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC642E77008300CE78F1 /* TransferView.swift */; };
 		CE19FC692E770B7D00CE78F1 /* TransferListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */; };
 		CE19FC6B2E77F51E00CE78F1 /* NetworkDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */; };
 		CE19FC6D2E77FECB00CE78F1 /* UIView+Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */; };
@@ -31,6 +30,10 @@
 		CE19FC7E2E783D6900CE78F1 /* TransfreDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC752E783D6900CE78F1 /* TransfreDetailsRouter.swift */; };
 		CE19FC7F2E783D6900CE78F1 /* TransfreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */; };
 		CE19FC802E783D6900CE78F1 /* TransfreDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19FC6F2E783D6900CE78F1 /* TransfreDetailsCoordinator.swift */; };
+		CE57CBA42E7955A4004C4C4E /* TransfreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA32E7955A4004C4C4E /* TransfreView.swift */; };
+		CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */; };
+		CE57CBA92E798128004C4C4E /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57CBA82E798128004C4C4E /* FavoritesManager.swift */; };
+		CE57CBAC2E7AA70A004C4C4E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE57CBAB2E7AA70A004C4C4E /* Kingfisher */; };
 		CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB152E76B1B900852723 /* NetworkError.swift */; };
 		CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB172E76B2FD00852723 /* ClientError.swift */; };
 		CE88AB1A2E76B3C700852723 /* ErrorResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88AB192E76B3C700852723 /* ErrorResonse.swift */; };
@@ -63,7 +66,6 @@
 		CE19FC532E76EB2B00CE78F1 /* ExStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExStack.swift; sourceTree = "<group>"; };
 		CE19FC552E76EB5400CE78F1 /* ExLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExLable.swift; sourceTree = "<group>"; };
 		CE19FC582E76EBA700CE78F1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		CE19FC642E77008300CE78F1 /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
 		CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListCell.swift; sourceTree = "<group>"; };
 		CE19FC6A2E77F51E00CE78F1 /* NetworkDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDI.swift; sourceTree = "<group>"; };
 		CE19FC6C2E77FECB00CE78F1 /* UIView+Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Refreshable.swift"; sourceTree = "<group>"; };
@@ -73,6 +75,9 @@
 		CE19FC752E783D6900CE78F1 /* TransfreDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsRouter.swift; sourceTree = "<group>"; };
 		CE19FC772E783D6900CE78F1 /* TransfreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewController.swift; sourceTree = "<group>"; };
 		CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreDetailsViewModel.swift; sourceTree = "<group>"; };
+		CE57CBA32E7955A4004C4C4E /* TransfreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreView.swift; sourceTree = "<group>"; };
+		CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfreFavoriteCell.swift; sourceTree = "<group>"; };
+		CE57CBA82E798128004C4C4E /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		CE88AB152E76B1B900852723 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CE88AB172E76B2FD00852723 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		CE88AB192E76B3C700852723 /* ErrorResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResonse.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE57CBAC2E7AA70A004C4C4E /* Kingfisher in Frameworks */,
 				CEAF2DAE2E75AB710053C5BA /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +114,7 @@
 			children = (
 				CE19FC492E76EA3500CE78F1 /* Extension */,
 				CE19FC1E2E76DC4000CE78F1 /* SwiftUI */,
+				CE57CBA72E798116004C4C4E /* Favorite */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -216,7 +223,7 @@
 		CE19FC632E77007400CE78F1 /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				CE19FC642E77008300CE78F1 /* TransferView.swift */,
+				CE57CBA32E7955A4004C4C4E /* TransfreView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				CE19FC682E770B7D00CE78F1 /* TransferListCell.swift */,
+				CE57CBA52E796D48004C4C4E /* TransfreFavoriteCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -296,6 +304,14 @@
 				CE19FC792E783D6900CE78F1 /* TransfreDetailsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE57CBA72E798116004C4C4E /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				CE57CBA82E798128004C4C4E /* FavoritesManager.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		CE88AB1D2E76B4F200852723 /* Error */ = {
@@ -455,6 +471,7 @@
 			name = "Blu-Bank";
 			packageProductDependencies = (
 				CEAF2DAD2E75AB710053C5BA /* Swinject */,
+				CE57CBAB2E7AA70A004C4C4E /* Kingfisher */,
 			);
 			productName = "Blu-Bank";
 			productReference = CEAF2D412E758FFE0053C5BA /* Blu-Bank.app */;
@@ -486,6 +503,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */,
+				CE57CBAA2E7AA70A004C4C4E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CEAF2D422E758FFE0053C5BA /* Products */;
@@ -516,9 +534,10 @@
 			files = (
 				CE19FC542E76EB2B00CE78F1 /* ExStack.swift in Sources */,
 				CE19FC592E76EBA700CE78F1 /* String+Extension.swift in Sources */,
-				CE19FC652E77008300CE78F1 /* TransferView.swift in Sources */,
 				CE19FC4E2E76EAA600CE78F1 /* ExColor.swift in Sources */,
 				CE88AB182E76B2FD00852723 /* ClientError.swift in Sources */,
+				CE57CBA62E796D48004C4C4E /* TransfreFavoriteCell.swift in Sources */,
+				CE57CBA92E798128004C4C4E /* FavoritesManager.swift in Sources */,
 				CEAF2D8F2E759F460053C5BA /* AppCoordinator.swift in Sources */,
 				CE88AB162E76B1B900852723 /* NetworkError.swift in Sources */,
 				CE19FC562E76EB5400CE78F1 /* ExLable.swift in Sources */,
@@ -540,6 +559,7 @@
 				CEAF2D892E759A780053C5BA /* BaseViewController.swift in Sources */,
 				CE19FC6D2E77FECB00CE78F1 /* UIView+Refreshable.swift in Sources */,
 				CEAF2D7F2E7595910053C5BA /* AppDelegate.swift in Sources */,
+				CE57CBA42E7955A4004C4C4E /* TransfreView.swift in Sources */,
 				CE19FC502E76EABF00CE78F1 /* ExButton.swift in Sources */,
 				CEAF2D802E7595910053C5BA /* SceneDelegate.swift in Sources */,
 				CEAF2D912E759FA60053C5BA /* Coordinator.swift in Sources */,
@@ -769,6 +789,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE57CBAA2E7AA70A004C4C4E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.5.0;
+			};
+		};
 		CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -780,6 +808,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE57CBAB2E7AA70A004C4C4E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE57CBAA2E7AA70A004C4C4E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		CEAF2DAD2E75AB710053C5BA /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEAF2DAC2E75AB710053C5BA /* XCRemoteSwiftPackageReference "Swinject" */;

@@ -5,24 +5,32 @@
 //  Created by Nik on 15/09/2025.
 //
 import SwiftUI
-// MARK: - ----------------- Pull to Refresh
-struct RefreshableList<Content: View>: UIViewRepresentable {
+import Combine
+
+// MARK: - RefreshableList for iOS 14+ (UIKit + SwiftUI)
+struct RefreshableList<Item: Identifiable, Content: View>: UIViewRepresentable {
+    @Binding var items: [Item]
     @Binding var isRefreshing: Bool
     let onRefresh: () -> Void
-    let content: Content
+    let rowContent: (Item) -> Content
     
-    init(isRefreshing: Binding<Bool>, onRefresh: @escaping () -> Void, @ViewBuilder content: () -> Content) {
+    init(items: Binding<[Item]>, isRefreshing: Binding<Bool>, onRefresh: @escaping () -> Void, @ViewBuilder rowContent: @escaping (Item) -> Content) {
+        self._items = items
         self._isRefreshing = isRefreshing
         self.onRefresh = onRefresh
-        self.content = content()
+        self.rowContent = rowContent
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(parent: self)
     }
     
     func makeUIView(context: Context) -> UITableView {
         let tableView = UITableView()
-        tableView.refreshControl = context.coordinator.refreshControl
         tableView.delegate = context.coordinator
         tableView.dataSource = context.coordinator
-        context.coordinator.parent = self
+        tableView.refreshControl = context.coordinator.refreshControl
+        tableView.separatorStyle = .none
         return tableView
     }
     
@@ -34,10 +42,6 @@ struct RefreshableList<Content: View>: UIViewRepresentable {
         } else {
             uiView.refreshControl?.endRefreshing()
         }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(parent: self)
     }
     
     class Coordinator: NSObject, UITableViewDataSource, UITableViewDelegate {
@@ -55,12 +59,13 @@ struct RefreshableList<Content: View>: UIViewRepresentable {
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            1
+            parent.items.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = UITableViewCell()
-            let hosting = UIHostingController(rootView: parent.content)
+            let item = parent.items[indexPath.row]
+            let hosting = UIHostingController(rootView: parent.rowContent(item))
             hosting.view.translatesAutoresizingMaskIntoConstraints = false
             cell.contentView.addSubview(hosting.view)
             NSLayoutConstraint.activate([
@@ -69,6 +74,7 @@ struct RefreshableList<Content: View>: UIViewRepresentable {
                 hosting.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
                 hosting.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
             ])
+            cell.selectionStyle = .none
             return cell
         }
     }

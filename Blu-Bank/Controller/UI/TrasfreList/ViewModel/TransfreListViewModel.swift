@@ -4,125 +4,117 @@
 //
 //  Created by Nik on 14/09/2025.
 //
-import UIKit
-import Foundation
+
 import Combine
 import SwiftUI
 
 extension TransfreListViewController {
     class ViewModel: BaseViewModel {
-        // MARK: - Properties
+        // MARK: - ----------------- Properties
         @Published var transferList: [TransfreListModel] = []
-        @Published var isLoading: Bool = false
-        @Published var isRefreshing: Bool = false
+        @Published var favoriteList: [TransfreListModel] = []
+        @Published var isLoading = false
+        @Published var isRefreshing = false
         
-        var cancellables = Set<AnyCancellable>()
-        private let networkService: NetworkServiceProtocol
+        private var cancellables = Set<AnyCancellable>()
+        private(set) var currentPage = 1
+        private(set) var hasMore = true
+        private let pageSize = 10
+      
+        let networkService: NetworkServiceProtocol
+        let favoritesManager: FavoritesManager<TransfreListModel>
         
-        private var currentPage: Int = 1
-        private let pageSize: Int = 10
-        private var hasMore: Bool = true
-        
-        // MARK: - Init
-        init(networkService: NetworkServiceProtocol) {
+        // MARK: - ----------------- Init
+        init(networkService: NetworkServiceProtocol,
+             favoritesManager: FavoritesManager<TransfreListModel>) {
             self.networkService = networkService
+            self.favoritesManager = favoritesManager
             super.init()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.transferList = TransfreListModel.mock
-            })
+            favoriteList = favoritesManager.all()
+            subscribeFavoriteList()
         }
+    }
+}
+// MARK: - ----------------- Function for Api Call And Fech Data
+extension TransfreListViewController.ViewModel {
+    func loadFirstPage() {
+        currentPage = 1
+        hasMore = true
+        transferList.removeAll()
+        fetchTransferList(page: currentPage)
+    }
+    
+    func fetchNextPage() {
+        guard hasMore, !isLoading else { return }
+        fetchTransferList(page: currentPage)
+    }
+    
+    func refreshList() {
+        isRefreshing = true
+        loadFirstPage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.isRefreshing = false
+        }
+    }
+    
+    private func fetchTransferList(page: Int) {
+        guard !isLoading, hasMore else { return }
+        isLoading = true
         
-        // MARK: - Fetch Page
-        func fetchNextPageIfNeeded(currentItem: TransfreListModel?) {
-            guard let currentItem else {
-                fetchTransferList(page: 1)
-                return
+        let router = TransferListRouter.transferList(page: page)
+        
+        networkService.request(router)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                self.isLoading = false
+                if case .failure(let error) = completion {
+                    print("Transfer list error: \(error)")
+                }
+            } receiveValue: { [weak self] (transfers: [TransfreListModel]) in
+                guard let self = self else { return }
+                
+                // Filter duplicates based on id
+                let newTransfers = transfers.filter { transfer in
+                    !self.transferList.contains { $0.id == transfer.id }
+                }
+                
+                // Append with animation
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    self.transferList.append(contentsOf: newTransfers)
+                }
+                
+                // Update pagination
+                self.hasMore = transfers.count >= self.pageSize
+                if !newTransfers.isEmpty {
+                    self.currentPage += 1
+                }
             }
-            
-            guard let lastIndex = transferList.firstIndex(where: { $0.id == currentItem.id }) else { return }
-            let thresholdIndex = transferList.index(transferList.endIndex, offsetBy: -3)
-            
-            guard lastIndex >= thresholdIndex else { return }
-            guard hasMore, !isLoading else { return }
-            
-            fetchTransferList(page: currentPage)
-        }
-        
-        // MARK: - Refresh
-        func refreshList() {
-            isRefreshing = true
-            currentPage = 1
-            hasMore = true
-            let router = TransferListRouter.transferList(page: currentPage)
-            networkService.request(router)
-                .receive(on: DispatchQueue.main)
-                .handleEvents(receiveCompletion: { [weak self] _ in
-                    self?.isRefreshing = false
-                })
-                .sink(receiveCompletion: { completion in
-                    if case .failure(let error) = completion {
-                        print("Transfer list error: \(error)")
-                    }
-                }, receiveValue: { [weak self] (transfers: [TransfreListModel]) in
-                    guard let self else { return }
-                    
-                    for transfer in transfers {
-                        if let index = self.transferList.firstIndex(where: { $0.id == transfer.id }) {
-                            if self.transferList[index] != transfer {
-                                withAnimation(.easeInOut(duration: 0.3)) {
-                                    self.transferList[index] = transfer
-                                }
-                            }
-                        } else {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                self.transferList.append(transfer)
-                            }
-                        }
-                    }
-                    self.hasMore = transfers.count >= self.pageSize
-                    self.currentPage += 1
-                })
-                .store(in: &cancellables)
-        }
-        
-        
-        // MARK: - Private Fetch
-        private func fetchTransferList(page: Int) {
-            isLoading = true
-            let router = TransferListRouter.transferList(page: page)
-            
-            networkService.request(router)
-                .receive(on: DispatchQueue.main)
-                .handleEvents(receiveCompletion: { [weak self] _ in
-                    self?.isLoading = false
-                })
-                .sink(receiveCompletion: { completion in
-                    if case .failure(let error) = completion {
-                        print("Transfer list error: \(error)")
-                    }
-                }, receiveValue: { [weak self] (transfers: [TransfreListModel]) in
-                    guard let self else { return }
-                    
-                    let newTransfers = transfers.filter { newTransfer in
-                        !self.transferList.contains { $0.id == newTransfer.id }
-                    }
-                    
-                    if !newTransfers.isEmpty {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            self.transferList.append(contentsOf: newTransfers)
-                        }
-                    } else {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            self.transferList.append(contentsOf: transfers)
-                        }
-                    }
-                    
-                    if transfers.count < self.pageSize {
-                        self.hasMore = false
-                    }
-                    self.currentPage += 1
-                })
-                .store(in: &cancellables)
-        }
+            .store(in: &cancellables)
+    }
+    
+}
+// MARK: - ----------------- Manage Favorite
+extension TransfreListViewController.ViewModel {
+    func subscribeFavoriteList() {
+        favoritesManager.$items
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                self?.favoriteList = items
+            }
+            .store(in: &cancellables)
+    }
+    
+    func toggleFavorite(_ item: TransfreListModel) {
+        favoritesManager.toggle(item)
+        favoriteListUpdate()
+    }
+    
+    func isFavorite(_ item: TransfreListModel) -> Bool {
+        favoritesManager.isFavorite(item)
+    }
+    
+    func favoriteListUpdate() {
+        favoriteList = favoritesManager.all()
     }
 }

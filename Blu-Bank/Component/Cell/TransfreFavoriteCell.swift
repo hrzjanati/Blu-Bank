@@ -1,20 +1,19 @@
 //
-//  TransferListCell.swift
+//  TransfreFavoriteCell.swift
 //  Blu-Bank
 //
-//  Created by Nik on 14/09/2025.
+//  Created by Nik on 16/09/2025.
 //
 
 import SwiftUI
 import Combine
 
-struct TransferListCell: View {
+struct TransfreFavoriteCell: View {
     // MARK: - ----------------- Properties
     var name: String?
     var identifier: String?
     var avatarURL: String?
     var networkService: NetworkServiceProtocol
-    var isFavorite: Bool?
     
     @State private var avatarImage: UIImage? = nil
     @State private var isLoadingImage = true
@@ -22,30 +21,21 @@ struct TransferListCell: View {
     
     // MARK: - ----------------- View
     var body: some View {
-        HStack {
+        VStack {
             viewAvatarImage()
             
-            VStack(alignment: .leading) {
-                Text(name ?? "Not Found")
-                Text(identifier ?? "Not Found")
-            }
-            .padding(.horizontal)
+            Text(name ?? "Not Found")
+                .font(.caption)
             
-            Spacer()
-            
-            if isFavorite ?? false {
-                Image(systemName: "star.fill")
-                    .foregroundColor(.yellow)
-            }
-            
-            Image(systemName: "chevron.right")
-                .frame(width: 20, height: 20)
+            Text(identifier ?? "Not Found")
+                .font(.footnote)
+                .padding(.horizontal)
         }
-        .padding()
         .onAppear {
             loadImage()
         }
     }
+    
     // MARK: - ----------------- Load Image
     private func loadImage() {
         guard let urlString = avatarURL else { return }
@@ -58,17 +48,18 @@ struct TransferListCell: View {
             }
             .store(in: &cancellables)
     }
+    
     // MARK: - ----------------- View Avatar Image
     private func viewAvatarImage() -> some View {
         ZStack {
             if isLoadingImage {
                 ProgressView()
-                    .frame(width: 40, height: 40)
+                    .frame(width: 60, height: 60)
             } else {
                 Image(uiImage: avatarImage ?? UIImage(systemName: "person.circle")!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 40, height: 40)
+                    .frame(width: 60, height: 60)
                     .clipShape(Circle())
             }
         }
@@ -77,7 +68,7 @@ struct TransferListCell: View {
 
 // MARK: - ----------------- Preview
 #Preview {
-    TransferListCell(name: "Hossein",
-                     identifier: "identifire 1",
-                     networkService: NetworkService())
+    TransfreFavoriteCell(name: "Hossein",
+                         identifier: "identifire 1",
+                         networkService: NetworkService())
 }

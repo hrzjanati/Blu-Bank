@@ -22,10 +22,16 @@ class TransfreDetailsCoordinator {
     // MARK: - ----------------- Start
     func start() {
         guard let vc = resolver.resolve(TransfreDetailsViewController.self) else { return }
+        let favoritesManager = resolver.resolve(FavoritesManager<TransfreListModel>.self)!
+        let networkService = resolver.resolve(NetworkServiceProtocol.self)!
+        vc.vm = TransfreDetailsViewController.ViewModel(transferItem,
+                                                        favoritesManager: favoritesManager,
+                                                        networkService: networkService)
         vc.coordinator = self
-        vc.vm = .init(transferItem)
+        vc.navigationItem.title = "Transfer Details"
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     func dismiss() {
         navigationController?.popViewController(animated: true)
     }

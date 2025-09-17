@@ -31,7 +31,8 @@ class TransfreListCoordinator : ObservableObject {
     }
     
     func showDetails(for transfer: TransfreListModel) {
-        let coordinator = TransfreDetailsCoordinator(navigationController: navigationController!,
+        guard let navigationController else { return }
+        let coordinator = TransfreDetailsCoordinator(navigationController: navigationController,
                                                      resolver: resolver,
                                                      transferItem: transfer)
         coordinator.start()

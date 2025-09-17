@@ -21,12 +21,13 @@ class TransfreListViewController: BaseViewController {
 extension TransfreListViewController {
     ///SetUp View
     private func setUpView() {
-        guard let vm = vm else { return }
-        
-        let swiftUIView = TransferView(vm: vm)
-            .environmentObject(coordinator!)
-        
-        let hosting = UIHostingController(rootView: swiftUIView)
+        guard let vm = vm, let coordinator = coordinator else { return }
+          
+        let swiftUIView = TransferView(vm: vm, networkService: vm.networkService)
+              .environmentObject(coordinator)
+              .environmentObject(vm.favoritesManager)
+          
+          let hosting = UIHostingController(rootView: swiftUIView)
         
         guard let transfreView = hosting.view else { return }
         
@@ -61,7 +62,8 @@ struct TransfreListViewController_preview: PreviewProvider {
     // Create VC with injected ViewModel
     static func makePreview() -> some View {
         let vc = TransfreListViewController()
-        vc.vm = TransfreListViewController.ViewModel(networkService: NetworkService())
+        vc.vm = TransfreListViewController.ViewModel(networkService: NetworkService(),
+                                                     favoritesManager: FavoritesManager<TransfreListModel>(key: ""))
         return vc.showPreview()
     }
 }
