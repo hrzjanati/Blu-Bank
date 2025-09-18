@@ -50,7 +50,7 @@ This project provides a clean folder structure and ready-to-use setup for modern
 
 ## ✨ Features
 
-- Base template for a professional project structure  
+- Base template for a professional project structure  (https://github.com/hrzjanati/Blu-Bank/releases/tag/untagged-1685663420f6f292e3e0)
 - UIKit extensions to simplify constraints (SwiftUI-like syntax)  
 - Image management with **Kingfisher**  
 - Package-based dependency management using **Swift Package Manager**  
